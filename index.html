@@ -4,199 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Diagnóstico Elétrico em Porto Alegre | CWC</title>
+<title>CWC Diagnóstico Elétrico — Porto Alegre</title>
 
-<meta name="description" content="Disjuntor caindo, cheiro de queimado, pane elétrica. Diagnóstico elétrico profissional em Porto Alegre. Atendimento técnico especializado.">
+<meta name="description" content="Diagnóstico elétrico profissional em Porto Alegre. Disjuntor caindo, pane elétrica, cheiro de queimado. Atendimento técnico especializado.">
 
-<!-- SEO -->
-<meta name="robots" content="index, follow">
-<meta name="author" content="CWC Diagnóstico Elétrico">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Diagnóstico Elétrico em Porto Alegre">
-<meta property="og:description" content="Identificamos a causa real de falhas elétricas. Atendimento técnico profissional.">
-<meta property="og:type" content="website">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
 <style>
 :root{
---bg:#0d0d0d;
---card:#161616;
---text:#f5f5f5;
---gray:#a0a0a0;
---accent:#c9a54d;
---wa:#25D366;
+--bg:#0E0E0D;
+--card:#151514;
+--text:#FAFAF8;
+--muted:#9B9A94;
+--accent:#C9920A;
+--green:#25D366;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:'Inter',sans-serif;
-background:linear-gradient(180deg,#0d0d0d,#111);
+font-family:'DM Sans',sans-serif;
+background:linear-gradient(180deg,#0E0E0D,#121211);
 color:var(--text);
 }
 
 .container{
 max-width:900px;
 margin:auto;
-padding:40px 20px;
+padding:60px 24px;
 }
 
-h1{
-font-size:clamp(32px,5vw,52px);
-line-height:1.2;
-margin-bottom:20px;
+/* HERO */
+.hero h1{
+font-family:'DM Serif Display',serif;
+font-size:clamp(36px,6vw,64px);
+line-height:1.1;
+margin-bottom:16px;
 }
 
-h1 span{
+.hero h1 em{
 color:var(--accent);
+font-style:italic;
 }
 
 .sub{
-color:var(--gray);
-margin-bottom:30px;
-font-size:17px;
+color:var(--muted);
+font-size:18px;
+margin-bottom:32px;
 }
 
+/* BOTÃO */
 .btn{
 display:inline-block;
-background:linear-gradient(135deg,#25D366,#1ebe5d);
+background:var(--green);
 color:#000;
-padding:16px 28px;
+padding:16px 32px;
 font-weight:600;
 text-decoration:none;
-border-radius:6px;
-transition:0.2s;
+transition:.2s;
 }
 
 .btn:hover{
 transform:translateY(-2px);
+opacity:.9;
 }
 
-.section{
-margin:50px 0;
-}
-
+/* CARDS */
 .card{
 background:var(--card);
-padding:20px;
-border-radius:6px;
-margin-bottom:20px;
-border:1px solid #222;
+padding:24px;
+margin:20px 0;
+border:1px solid rgba(255,255,255,0.05);
+transition:.2s;
 }
 
-.title{
-font-size:14px;
-letter-spacing:1px;
-text-transform:uppercase;
+.card:hover{
+transform:translateY(-3px);
+border-color:rgba(201,146,10,0.4);
+}
+
+.card strong{
 color:var(--accent);
+display:block;
 margin-bottom:10px;
 }
 
-.services{
+/* SERVIÇOS GRID */
+.grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.services div{
-background:#111;
-padding:12px;
-border-radius:4px;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-top:10px;
 font-size:14px;
-color:#ccc;
+color:var(--muted);
 }
 
+/* PROVAS */
 .proof{
 margin-top:40px;
+}
+
+.proof-title{
+font-size:12px;
+letter-spacing:2px;
+color:var(--muted);
+margin-bottom:12px;
 }
 
 .proof-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:8px;
+gap:6px;
 }
 
 .proof-grid img{
 width:100%;
-height:90px;
+height:80px;
 object-fit:cover;
-border-radius:4px;
-opacity:0.85;
+opacity:.85;
 }
 
+/* FOOTER */
 .footer{
-margin-top:50px;
-font-size:13px;
-color:#777;
+margin-top:40px;
+font-size:12px;
+color:var(--muted);
 line-height:1.6;
-border-top:1px solid #222;
-padding-top:20px;
+}
+
+/* ANIMAÇÃO */
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:all .6s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:600px){
+.grid{grid-template-columns:1fr;}
+.proof-grid{grid-template-columns:repeat(2,1fr);}
 }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+document.querySelectorAll(".fade").forEach((el,i)=>{
+setTimeout(()=>el.classList.add("show"), i*150);
+});
+});
+</script>
+
 </head>
 
 <body>
 
 <div class="container">
 
+<div class="hero fade">
 <h1>
 Falha elétrica?<br>
-<span>Resolva com diagnóstico técnico.</span>
+<em>Resolva com diagnóstico.</em>
 </h1>
 
 <p class="sub">
-Especialistas em identificar a causa real de problemas elétricos.  
-Sem tentativa e erro — análise técnica profissional em Porto Alegre.
+Atendimento técnico especializado em Porto Alegre.<br>
+Identificamos a causa real — sem tentativa e erro.
 </p>
 
-<a class="btn" href="https://wa.me/5551993328805?text=Olá,%20preciso%20de%20diagnóstico%20elétrico">
-Falar no WhatsApp
+<a class="btn" href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20um%20diagnóstico%20elétrico%20em%20Porto%20Alegre.">
+Falar com especialista
 </a>
+</div>
 
 <!-- PROBLEMAS -->
-<div class="section card" id="problemas">
-<div class="title">Problemas que atendemos</div>
+<div class="card fade" id="problemas">
+<strong>Problemas que atendemos</strong>
+Disjuntor caindo, cheiro de queimado, pane elétrica, circuito parcial sem energia, quadro aquecendo, luz oscilando.
+</div>
 
-Disjuntor caindo constantemente<br>
-Pane elétrica parcial<br>
-Cheiro de queimado<br>
-Luz piscando ou oscilando<br>
-Queda de energia em setores da casa<br>
-Ar-condicionado derrubando disjuntor
+<!-- DIFERENCIAL -->
+<div class="card fade" id="erro">
+<strong>O erro comum</strong>
+Trocar peças sem diagnóstico técnico.<br>
+Isso gera retrabalho, risco e custo desnecessário.
 </div>
 
 <!-- SOLUÇÃO -->
-<div class="section card" id="solucao">
-<div class="title">Como atuamos</div>
-
-Realizamos diagnóstico técnico completo da instalação elétrica.  
-Identificamos a causa raiz do problema antes de qualquer intervenção.
-
-Isso evita trocas desnecessárias, retrabalho e prejuízo ao cliente.
+<div class="card fade" id="solucao">
+<strong>Como resolvemos</strong>
+Diagnóstico completo da instalação elétrica com análise técnica profissional.<br>
+Identificamos a causa antes de qualquer intervenção.
 </div>
 
 <!-- SERVIÇOS -->
-<div class="section card">
-<div class="title">Serviços técnicos</div>
+<div class="card fade">
+<strong>Serviços realizados</strong>
 
-<div class="services">
-<div>Diagnóstico elétrico residencial</div>
-<div>Instalação de fogão por indução</div>
-<div>Instalação de forno elétrico</div>
-<div>Instalação de ar-condicionado</div>
-<div>Quadro de disjuntores</div>
-<div>Quadro de comando elétrico</div>
-<div>Motores e bombas</div>
-<div>Correção de falhas elétricas</div>
+<div class="grid">
+<span>Diagnóstico elétrico completo</span>
+<span>Quadro de disjuntores</span>
+<span>Instalação fogão indução</span>
+<span>Instalação ar-condicionado</span>
+<span>Quadros de comando</span>
+<span>Correção curto-circuito</span>
+<span>Dimensionamento elétrico</span>
+<span>Instalação motores</span>
 </div>
 
 </div>
 
 <!-- PROVAS -->
-<div class="section proof" id="provas">
-<div class="title">Trabalhos realizados</div>
+<div class="proof fade" id="provas">
+<div class="proof-title">ATENDIMENTOS REAIS</div>
 
 <div class="proof-grid">
 <img src="antes_depois_1.PNG">
@@ -208,20 +231,19 @@ Isso evita trocas desnecessárias, retrabalho e prejuízo ao cliente.
 </div>
 </div>
 
-<a class="btn" href="https://wa.me/5551993328805?text=Olá,%20preciso%20de%20diagnóstico%20elétrico">
+<!-- CTA FINAL -->
+<div class="fade">
+<a class="btn" href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20um%20diagnóstico%20elétrico%20em%20Porto%20Alegre.">
 Solicitar diagnóstico
 </a>
+</div>
 
-<!-- RODAPÉ -->
-<div class="footer">
-
-<strong>CWC Diagnóstico Elétrico</strong><br>
-CNPJ: 24.683.232/0001-50<br>
-Endereço: Rua Franklin, 260 – Porto Alegre – RS<br>
-Telefone: (51) 99332-8805<br><br>
-
-Atendimento em Porto Alegre e região.
-
+<!-- FOOTER -->
+<div class="footer fade">
+CWC Diagnóstico Elétrico<br>
+CNPJ 24.683.232/0001-50<br>
+Rua Franklin, 260 — Porto Alegre<br>
+(51) 99332-8805
 </div>
 
 </div>
