@@ -7,50 +7,31 @@
 
 <title>Diagnóstico Elétrico em Porto Alegre | CWC Especialista</title>
 
-<meta name="description" content="Disjuntor caindo, cheiro de queimado ou pane elétrica? Diagnóstico elétrico profissional em Porto Alegre. Atendimento rápido.">
-
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Diagnóstico Elétrico em Porto Alegre">
-<meta property="og:description" content="Especialista em falhas elétricas. Atendimento rápido e técnico.">
-<meta property="og:type" content="website">
-
-<!-- Schema Local -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "LocalBusiness",
- "name": "CWC Diagnóstico Elétrico",
- "telephone": "+5551993328805",
- "address": {
-   "@type": "PostalAddress",
-   "streetAddress": "Rua Franklin, 260",
-   "addressLocality": "Porto Alegre",
-   "addressRegion": "RS",
-   "addressCountry": "BR"
- }
-}
-</script>
+<meta name="description" content="Diagnóstico elétrico profissional em Porto Alegre. Disjuntor caindo, pane elétrica, cheiro de queimado. Atendimento técnico.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:#0B0C0E;
-  --card:#14161A;
+  --bg:#0A0B0D;
+  --bg2:#11131A;
+  --card:#161922;
   --text:#F5F5F5;
   --muted:#9CA3AF;
   --accent:#FACC15;
+  --accent-soft:#EAB308;
   --wa:#25D366;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  background:linear-gradient(180deg,#0B0C0E,#111317);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(250,204,21,0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(59,130,246,0.08), transparent 40%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
   color:var(--text);
-  font-family:'Inter',sans-serif;
+  font-family:'Inter', sans-serif;
 }
 
 .container {
@@ -62,10 +43,15 @@ body {
 /* HERO */
 .hero h1 {
   font-family:'Playfair Display', serif;
-  font-size:clamp(42px,6vw,72px);
+  font-size:clamp(44px,6vw,72px);
+  line-height:1.05;
 }
 
-.hero em { color:var(--accent); }
+.hero em {
+  background:linear-gradient(90deg,#FACC15,#EAB308);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
 .sub {
   margin:20px 0 30px;
@@ -74,12 +60,13 @@ body {
   max-width:600px;
 }
 
+/* BOTÃO */
 .btn {
   background:var(--wa);
   color:#000;
   padding:18px 36px;
   font-weight:600;
-  border-radius:6px;
+  border-radius:8px;
   text-decoration:none;
   display:inline-block;
   box-shadow:0 10px 30px rgba(37,211,102,0.3);
@@ -88,6 +75,7 @@ body {
 
 .btn:hover {
   transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(37,211,102,0.4);
 }
 
 /* SECTIONS */
@@ -98,32 +86,59 @@ body {
 .section h2 {
   margin-bottom:20px;
   font-size:28px;
+  position:relative;
 }
 
-/* CARDS */
+.section h2::after {
+  content:"";
+  width:40px;
+  height:2px;
+  background:var(--accent);
+  display:block;
+  margin-top:8px;
+}
+
+/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  gap:18px;
 }
 
+/* CARD */
 .card {
-  background:var(--card);
+  background:linear-gradient(145deg,#161922,#101218);
   padding:24px;
-  border-radius:10px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.05);
   transition:.3s;
-  border:1px solid transparent;
+  position:relative;
+}
+
+.card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  background:linear-gradient(120deg,transparent,rgba(250,204,21,0.08),transparent);
+  opacity:0;
+  transition:.3s;
+}
+
+.card:hover::before {
+  opacity:1;
 }
 
 .card:hover {
   transform:translateY(-6px);
-  border:1px solid var(--accent);
+  border-color:rgba(250,204,21,0.4);
 }
 
 /* ICON */
 .icon {
   font-size:26px;
   margin-bottom:10px;
+  color:var(--accent);
 }
 
 /* IMAGENS */
@@ -137,7 +152,7 @@ body {
   width:100%;
   height:130px;
   object-fit:cover;
-  border-radius:6px;
+  border-radius:8px;
   transition:.3s;
 }
 
@@ -149,7 +164,7 @@ body {
 .reveal {
   opacity:0;
   transform:translateY(40px);
-  transition:.8s;
+  transition:all .8s ease;
 }
 
 .reveal.active {
@@ -160,13 +175,17 @@ body {
 /* FOOTER */
 .footer {
   margin-top:100px;
-  border-top:1px solid #222;
+  border-top:1px solid rgba(255,255,255,0.08);
   padding-top:30px;
   color:var(--muted);
+  font-size:14px;
 }
 
+/* RESPONSIVO */
 @media(max-width:700px){
-  .grid,.images { grid-template-columns:1fr 1fr; }
+  .grid,.images {
+    grid-template-columns:1fr 1fr;
+  }
 }
 </style>
 
@@ -179,7 +198,7 @@ body {
 <!-- HERO -->
 <div class="hero reveal">
 <h1>
-Problema elétrico?<br>
+Falha elétrica?<br>
 <em>Resolva com diagnóstico.</em>
 </h1>
 
@@ -201,13 +220,13 @@ Chamar especialista
 <div class="card">
 <div class="icon">⚡</div>
 <h3>Disjuntor caindo</h3>
-<p>Falha recorrente na instalação.</p>
+<p>Falha recorrente na instalação elétrica.</p>
 </div>
 
 <div class="card">
 <div class="icon">🔥</div>
 <h3>Cheiro de queimado</h3>
-<p>Risco elétrico imediato.</p>
+<p>Indica risco elétrico imediato.</p>
 </div>
 
 <div class="card">
@@ -223,7 +242,7 @@ Chamar especialista
 <h2>O erro comum</h2>
 
 <div class="card">
-Trocar peças sem diagnóstico técnico. O problema volta e custa mais caro.
+Trocar peças sem diagnóstico técnico mascara o problema e aumenta o custo.
 </div>
 </div>
 
