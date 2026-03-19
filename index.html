@@ -6,15 +6,15 @@
 
 <title>CWC Diagnóstico Elétrico — Porto Alegre</title>
 
-<meta name="description" content="Diagnóstico elétrico em Porto Alegre. Disjuntor caindo, pane elétrica, cheiro de queimado. Atendimento técnico no mesmo dia.">
+<meta name="description" content="Diagnóstico elétrico em Porto Alegre. Disjuntor caindo, pane elétrica, cheiro de queimado. Atendimento técnico especializado.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg:#0F1113;
-  --card:#16181B;
-  --text:#F5F5F5;
+  --card:#17191C;
+  --text:#F3F4F6;
   --muted:#9CA3AF;
   --accent:#D4A017;
   --line:#26282C;
@@ -30,17 +30,17 @@ body {
 }
 
 .container {
-  max-width:920px;
+  max-width:1000px;
   margin:auto;
-  padding:60px 24px;
+  padding:80px 24px;
 }
 
 /* HERO */
 h1 {
   font-family:'Playfair Display', serif;
-  font-size:clamp(40px,6vw,66px);
-  line-height:1.1;
-  margin-bottom:20px;
+  font-size:clamp(42px,6vw,70px);
+  line-height:1.05;
+  margin-bottom:24px;
 }
 
 h1 em {
@@ -49,27 +49,26 @@ h1 em {
 }
 
 .sub {
+  font-size:18px;
   color:var(--muted);
-  font-size:17px;
-  margin-bottom:36px;
-  max-width:520px;
+  max-width:600px;
+  margin-bottom:40px;
 }
 
 .btn {
-  display:inline-block;
   background:var(--wa);
   color:#000;
-  padding:18px 34px;
-  text-decoration:none;
+  padding:18px 36px;
   font-weight:600;
-  font-size:15px;
   border-radius:6px;
-  box-shadow:0 10px 30px rgba(37,211,102,0.25);
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 12px 40px rgba(37,211,102,0.25);
   transition:.2s;
 }
 
 .btn:hover {
-  transform:translateY(-2px);
+  transform:translateY(-3px);
 }
 
 .note {
@@ -78,11 +77,9 @@ h1 em {
   color:var(--muted);
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
-  margin-top:70px;
-  padding-top:40px;
-  border-top:1px solid var(--line);
+  margin-top:80px;
 }
 
 .title {
@@ -90,39 +87,56 @@ h1 em {
   letter-spacing:2px;
   text-transform:uppercase;
   color:var(--accent);
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
 .text {
-  font-size:15px;
-  line-height:1.7;
+  font-size:16px;
+  line-height:1.8;
   color:#E5E7EB;
-}
-
-/* LIST */
-.list li {
-  margin-bottom:6px;
+  max-width:700px;
 }
 
 /* CARDS */
 .card {
   background:var(--card);
-  padding:18px;
-  border-radius:6px;
+  padding:24px;
+  border-radius:8px;
+  margin-top:20px;
+  border:1px solid var(--line);
 }
 
 /* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  gap:12px;
+  margin-top:20px;
 }
 
 .grid img {
   width:100%;
-  height:110px;
+  height:130px;
   object-fit:cover;
   border-radius:6px;
+}
+
+/* HIGHLIGHT */
+.highlight {
+  border-left:3px solid var(--accent);
+  padding-left:16px;
+  margin-top:20px;
+  color:#E5E7EB;
+}
+
+/* EFFECT */
+.fade {
+  animation:fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(10px);}
+  to { opacity:1; transform:translateY(0);}
 }
 
 @media(max-width:700px){
@@ -145,52 +159,74 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <body>
 
-<div class="container">
+<div class="container fade">
 
 <h1>
-Problema elétrico?<br>
-<em>Resolva hoje.</em>
+Falha elétrica não é sorte.<br>
+<em>É diagnóstico.</em>
 </h1>
 
 <p class="sub">
-Diagnóstico técnico em Porto Alegre. Identificamos a causa real do problema — sem tentativa e erro.
+A maioria dos problemas elétricos não está onde parece.  
+Sem análise técnica, o erro continua — e o custo aumenta.
 </p>
 
-<a class="btn cta-btn" href="https://wa.me/5551993328805?text=Olá,%20preciso%20de%20diagnóstico%20elétrico%20em%20Porto%20Alegre">
+<a class="btn cta-btn" href="https://wa.me/5551993328805">
 Chamar especialista
 </a>
 
 <div class="note">
-Atendimento no mesmo dia • Porto Alegre
+Atendimento técnico em Porto Alegre • Mesmo dia
 </div>
 
 <!-- PROBLEMAS -->
 <div class="section" id="problemas">
-<div class="title">Problemas comuns</div>
-<div class="card text">
-Disjuntor caindo • Parte sem energia • Cheiro de queimado • Luz oscilando • Curto circuito
+<div class="title">Sintomas mais comuns</div>
+
+<div class="card">
+<div class="text">
+Disjuntor desarmando constantemente, parte da residência sem energia, cheiro de queimado, oscilações na rede ou falhas intermitentes.
+</div>
+
+<div class="highlight">
+Esses sinais indicam falhas ocultas na instalação elétrica — não resolver a causa pode gerar danos maiores.
+</div>
 </div>
 </div>
 
 <!-- ERRO -->
 <div class="section" id="erro">
-<div class="title">Erro comum</div>
-<div class="card text">
-Trocar peças sem diagnóstico. O problema volta e o custo aumenta.
+<div class="title">Onde está o erro</div>
+
+<div class="card">
+<div class="text">
+A tentativa de resolver sem diagnóstico leva à troca desnecessária de componentes, mascarando o problema real.
+</div>
+
+<div class="highlight">
+Isso gera custo recorrente e aumenta o risco elétrico.
+</div>
 </div>
 </div>
 
 <!-- SOLUÇÃO -->
 <div class="section" id="solucao">
-<div class="title">Solução</div>
-<div class="card text">
-Diagnóstico técnico completo para identificar a causa real antes de qualquer intervenção.
+<div class="title">Abordagem técnica</div>
+
+<div class="card">
+<div class="text">
+Realizamos diagnóstico completo utilizando análise técnica da instalação, identificando a causa raiz antes de qualquer intervenção.
+</div>
+
+<div class="highlight">
+Resultado: solução definitiva, sem retrabalho.
+</div>
 </div>
 </div>
 
 <!-- PROVAS -->
 <div class="section" id="provas">
-<div class="title">Trabalhos realizados</div>
+<div class="title">Execuções recentes</div>
 
 <div class="grid">
 <img src="antes_depois_1.PNG">
@@ -202,20 +238,21 @@ Diagnóstico técnico completo para identificar a causa real antes de qualquer i
 </div>
 </div>
 
-<!-- CTA FINAL -->
+<!-- CTA -->
 <div class="section">
-<a class="btn cta-btn" href="https://wa.me/5551993328805?text=Olá,%20preciso%20de%20diagnóstico%20elétrico%20em%20Porto%20Alegre">
+<a class="btn cta-btn" href="https://wa.me/5551993328805">
 Chamar especialista
 </a>
 </div>
 
 <!-- EMPRESA -->
 <div class="section">
-<div class="title">Empresa</div>
+<div class="title">CWC Diagnóstico Elétrico</div>
+
 <div class="text">
-CWC Diagnóstico Elétrico<br><br>
-Rua Franklin, 260 — Porto Alegre<br>
-Telefone: (51) 99332-8805<br>
+Atendimento técnico especializado em Porto Alegre.<br><br>
+Rua Franklin, 260<br>
+(51) 99332-8805<br>
 CNPJ: 24.683.232/0001-50
 </div>
 </div>
