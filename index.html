@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CWC Diagnóstico Elétrico — Porto Alegre</title>
+<title>Diagnóstico Elétrico em Porto Alegre | CWC Especialista</title>
 
-<meta name="description" content="Diagnóstico elétrico em Porto Alegre. Disjuntor caindo, pane elétrica, cheiro de queimado. Atendimento técnico.">
+<meta name="description" content="Disjuntor caindo, cheiro de queimado ou pane elétrica? Diagnóstico elétrico profissional em Porto Alegre. Atendimento rápido.">
+
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Diagnóstico Elétrico em Porto Alegre">
+<meta property="og:description" content="Especialista em falhas elétricas. Atendimento rápido e técnico.">
+<meta property="og:type" content="website">
+
+<!-- Schema Local -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "LocalBusiness",
+ "name": "CWC Diagnóstico Elétrico",
+ "telephone": "+5551993328805",
+ "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Rua Franklin, 260",
+   "addressLocality": "Porto Alegre",
+   "addressRegion": "RS",
+   "addressCountry": "BR"
+ }
+}
+</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:#0E0F11;
-  --card:#16181C;
+  --bg:#0B0C0E;
+  --card:#14161A;
   --text:#F5F5F5;
   --muted:#9CA3AF;
-  --accent:#D4A017;
-  --line:#23252A;
+  --accent:#FACC15;
   --wa:#25D366;
 }
 
-* { box-sizing:border-box; margin:0; padding:0; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  background:var(--bg);
+  background:linear-gradient(180deg,#0B0C0E,#111317);
   color:var(--text);
-  font-family:'Inter', sans-serif;
+  font-family:'Inter',sans-serif;
 }
 
 .container {
@@ -38,53 +62,45 @@ body {
 /* HERO */
 .hero h1 {
   font-family:'Playfair Display', serif;
-  font-size:clamp(44px,6vw,72px);
-  line-height:1.05;
+  font-size:clamp(42px,6vw,72px);
 }
 
-.hero h1 em { color:var(--accent); }
+.hero em { color:var(--accent); }
 
 .sub {
+  margin:20px 0 30px;
   color:var(--muted);
   font-size:18px;
-  margin:20px 0 30px;
   max-width:600px;
 }
 
 .btn {
-  display:inline-block;
   background:var(--wa);
   color:#000;
   padding:18px 36px;
   font-weight:600;
   border-radius:6px;
   text-decoration:none;
-  box-shadow:0 10px 30px rgba(37,211,102,0.25);
-  transition:.25s;
+  display:inline-block;
+  box-shadow:0 10px 30px rgba(37,211,102,0.3);
+  transition:.3s;
 }
 
 .btn:hover {
-  transform:translateY(-3px) scale(1.02);
+  transform:translateY(-4px);
 }
 
-/* SECTION */
+/* SECTIONS */
 .section {
   margin-top:100px;
 }
 
-/* ANIMAÇÃO */
-.reveal {
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .8s ease;
+.section h2 {
+  margin-bottom:20px;
+  font-size:28px;
 }
 
-.reveal.active {
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* GRID */
+/* CARDS */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -95,16 +111,18 @@ body {
   background:var(--card);
   padding:24px;
   border-radius:10px;
-  border:1px solid var(--line);
   transition:.3s;
+  border:1px solid transparent;
 }
 
 .card:hover {
   transform:translateY(-6px);
-  border-color:var(--accent);
+  border:1px solid var(--accent);
 }
 
-.card h3 {
+/* ICON */
+.icon {
+  font-size:26px;
   margin-bottom:10px;
 }
 
@@ -127,19 +145,28 @@ body {
   transform:scale(1.05);
 }
 
+/* ANIMAÇÃO */
+.reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s;
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
 /* FOOTER */
 .footer {
   margin-top:100px;
-  border-top:1px solid var(--line);
+  border-top:1px solid #222;
   padding-top:30px;
   color:var(--muted);
-  font-size:14px;
 }
 
 @media(max-width:700px){
-  .grid, .images {
-    grid-template-columns:1fr 1fr;
-  }
+  .grid,.images { grid-template-columns:1fr 1fr; }
 }
 </style>
 
@@ -152,13 +179,13 @@ body {
 <!-- HERO -->
 <div class="hero reveal">
 <h1>
-Falha elétrica?<br>
+Problema elétrico?<br>
 <em>Resolva com diagnóstico.</em>
 </h1>
 
 <p class="sub">
-A maioria dos problemas elétricos não está onde parece.  
-Sem análise técnica, o erro continua — e o custo aumenta.
+Sem análise técnica, o problema volta.  
+Identificamos a causa real — não fazemos tentativa e erro.
 </p>
 
 <a class="btn" href="https://wa.me/5551993328805">
@@ -172,18 +199,21 @@ Chamar especialista
 
 <div class="grid">
 <div class="card">
+<div class="icon">⚡</div>
 <h3>Disjuntor caindo</h3>
 <p>Falha recorrente na instalação.</p>
 </div>
 
 <div class="card">
-<h3>Pane parcial</h3>
-<p>Parte da casa sem energia.</p>
+<div class="icon">🔥</div>
+<h3>Cheiro de queimado</h3>
+<p>Risco elétrico imediato.</p>
 </div>
 
 <div class="card">
-<h3>Cheiro de queimado</h3>
-<p>Risco elétrico imediato.</p>
+<div class="icon">💡</div>
+<h3>Luz oscilando</h3>
+<p>Problema oculto na rede.</p>
 </div>
 </div>
 </div>
@@ -193,7 +223,7 @@ Chamar especialista
 <h2>O erro comum</h2>
 
 <div class="card">
-Trocar peças sem diagnóstico técnico. O problema volta.
+Trocar peças sem diagnóstico técnico. O problema volta e custa mais caro.
 </div>
 </div>
 
@@ -202,13 +232,13 @@ Trocar peças sem diagnóstico técnico. O problema volta.
 <h2>Solução técnica</h2>
 
 <div class="card">
-Diagnóstico completo para identificar a causa real antes da intervenção.
+Diagnóstico completo para identificar a causa raiz antes de qualquer intervenção.
 </div>
 </div>
 
 <!-- PROVAS -->
 <div class="section reveal" id="provas">
-<h2>Trabalhos realizados</h2>
+<h2>Execuções reais</h2>
 
 <div class="images">
 <img src="antes_depois_1.PNG">
@@ -238,15 +268,12 @@ CNPJ: 24.683.232/0001-50
 </div>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
-    }
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('active'); }
   });
 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 </body>
