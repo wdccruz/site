@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CWC Diagnóstico Elétrico — Porto Alegre</title>
+
+<meta name="description" content="Disjuntor caindo, cheiro de queimado, pane elétrica. Diagnóstico elétrico profissional em Porto Alegre. Atendimento no mesmo dia.">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#0E0E0D;
+  --white:#FAFAF8;
+  --gray:#5A5955;
+  --light:#F4F3EF;
+  --amber:#C9920A;
+  --wa:#25D366;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  background:var(--white);
+  font-family:'DM Sans', sans-serif;
+  color:var(--black);
+}
+
+.container {
+  max-width:820px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1 {
+  font-family:'DM Serif Display', serif;
+  font-size:clamp(34px,6vw,58px);
+  margin-bottom:16px;
+}
+
+h1 em { color:var(--amber); }
+
+.sub {
+  color:var(--gray);
+  margin-bottom:28px;
+  font-size:16px;
+}
+
+.btn {
+  display:inline-block;
+  background:var(--wa);
+  color:#000;
+  padding:16px 28px;
+  text-decoration:none;
+  font-weight:600;
+  margin:20px 0;
+}
+
+.note {
+  font-size:13px;
+  color:#999;
+}
+
+.box {
+  background:var(--light);
+  padding:18px;
+  margin:20px 0;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* PROVA SOCIAL LIMPA */
+.proof {
+  margin:40px 0;
+}
+
+.proof-title {
+  font-size:13px;
+  color:#888;
+  margin-bottom:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.proof-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.proof-grid img {
+  width:100%;
+  height:90px;
+  object-fit:cover;
+  border-radius:4px;
+  opacity:0.9;
+}
+
+@media(max-width:600px){
+  .proof-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const variant = Math.random() < 0.5 ? "A" : "B";
+
+  document.querySelectorAll(".cta-btn").forEach(btn => {
+    btn.innerText = variant === "A" 
+      ? "Chamar especialista" 
+      : "Resolver agora";
+  });
+});
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+Sem luz? Disjuntor caindo?<br>
+<em>Resolva hoje.</em>
+</h1>
+
+<p class="sub">
+Diagnóstico elétrico profissional em Porto Alegre.<br>
+Identificamos a causa real — sem tentativa e erro.
+</p>
+
+<a class="btn cta-btn" href="https://wa.me/5551993328805?text=Olá,%20preciso%20de%20diagnóstico%20elétrico%20em%20Porto%20Alegre">
+Chamar especialista
+</a>
+
+<p class="note">
+Atendimento no mesmo dia • Porto Alegre
+</p>
+
+<div class="box">
+<strong>Você pode estar com:</strong><br><br>
+• Disjuntor caindo toda hora<br>
+• Parte da casa sem energia<br>
+• Cheiro de queimado<br>
+• Quadro aquecendo<br>
+• Luz piscando<br>
+• Pane elétrica parcial
+</div>
+
+<div class="box">
+<strong>O erro comum:</strong><br><br>
+Trocar peças sem diagnóstico.<br>
+O problema volta — e o prejuízo aumenta.
+</div>
+
+<div class="box">
+<strong>Como resolvemos:</strong><br><br>
+Diagnóstico técnico completo.<br>
+Identificamos a causa real antes de qualquer intervenção.
+</div>
+
+<!-- PROVA SOCIAL DISCRETA -->
+<div class="proof">
+  <div class="proof-title">Alguns trabalhos realizados</div>
+
+  <div class="proof-grid">
+    <img src="antes_depois_1.PNG">
+    <img src="qdc_1.JPG">
+    <img src="qdc_2.JPG">
+    <img src="qdc_3.JPG">
+    <img src="qdc_4.JPG">
+    <img src="comando_1.JPG">
+  </div>
+</div>
+
+<a class="btn cta-btn" href="https://wa.me/5551993328805?text=Olá,%20preciso%20de%20diagnóstico%20elétrico%20em%20Porto%20Alegre">
+Chamar especialista
+</a>
+
+<div class="note">
+CWC Diagnóstico Elétrico • Porto Alegre
+</div>
+
+</div>
+
+</body>
+</html>
