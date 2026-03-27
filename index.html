@@ -203,14 +203,18 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.5s ease 2s; /* Atraso de 2 segundos conforme solicitado */
 }
+.whatsapp-float.ready { opacity: 1; }
+
 .wa-icon {
     width: 56px; height: 56px;
     background: var(--green);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: #fff; font-size: 28px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra reduzida */
 }
 .wa-text {
     background: var(--card);
@@ -245,7 +249,7 @@ body {
         <span class="focus-text">Atendimento para falhas reais: disjuntor caindo, cheiro de queimado e quedas de energia.</span>
         <p class="sub">Diagnóstico elétrico especializado para identificar a causa exata do problema antes que ele se torne um prejuízo irreparável.</p>
         
-        <a href="https://wa.me/5551993328805?text=Olá! Vi o site e preciso de um diagnóstico técnico para minha rede elétrica." 
+        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
            class="btn-cta"
            onclick="gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC'});">
             <i class="fab fa-whatsapp"></i> Falar no WhatsApp agora
@@ -261,7 +265,7 @@ body {
             <div class="symptom-item"><i class="fas fa-check"></i> Luz piscando ou oscilando</div>
         </div>
     </div>
-    <p class="micro-cta fade">Descreva seu problema e receba uma orientação inicial</p>
+    <p class="micro-cta fade">Descreva o problema e receba uma orientação inicial</p>
 
     <div class="price-card fade">
         <div class="price-value">A partir de R$ 250</div>
@@ -296,10 +300,10 @@ body {
 
 </div>
 
-<a class="whatsapp-float" 
-   href="https://wa.me/5551993328805?text=Olá! Preciso de ajuda com um problema elétrico." 
+<a class="whatsapp-float" id="wa-button"
+   href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
    onclick="var url=this.href;gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC','event_callback':function(){window.location=url;}});return false;">
-    <div class="wa-text">Resolver agora</div>
+    <div class="wa-text">Diagnóstico imediato</div>
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
 </a>
 
@@ -311,6 +315,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.1 });
     document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+    // Atraso de exibição do botão flutuante
+    setTimeout(() => {
+        document.getElementById('wa-button').classList.add('ready');
+    }, 2500);
 });
 </script>
 
