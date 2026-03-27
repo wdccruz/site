@@ -97,9 +97,18 @@ body {
     text-decoration: none;
     font-size: 16px;
     transition: 0.3s;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 .btn-cta:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* MICROCOPY BOTÃO */
+.btn-microcopy {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 25px;
+    font-style: italic;
+}
 
 /* SEÇÃO DE SINTOMAS */
 .symptoms-box {
@@ -131,12 +140,12 @@ body {
 }
 .symptom-item i { color: var(--accent); font-size: 12px; }
 
-.micro-cta {
+/* REFORÇO SEGURANÇA */
+.safety-reinforcement {
     font-size: 14px;
     color: var(--muted);
     text-align: center;
     margin-bottom: 40px;
-    font-style: italic;
 }
 
 /* BLOCO DE PREÇO */
@@ -154,7 +163,7 @@ body {
 
 /* URGÊNCIA SUAVE */
 .urgency-note {
-    border-left: 2px solid #C9920A;
+    border-left: 2px solid var(--accent);
     padding: 15px 25px;
     margin: 40px 0;
     background: rgba(201, 146, 10, 0.03);
@@ -194,7 +203,7 @@ body {
     padding: 6px; font-size: 11px; text-align: center;
 }
 
-/* WHATSAPP FLUTUANTE REFINADO */
+/* WHATSAPP FLUTUANTE */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -204,7 +213,7 @@ body {
     align-items: center;
     text-decoration: none;
     opacity: 0;
-    transition: opacity 0.5s ease 2s; /* Atraso de 2 segundos conforme solicitado */
+    transition: opacity 0.5s ease 2s;
 }
 .whatsapp-float.ready { opacity: 1; }
 
@@ -214,7 +223,7 @@ body {
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: #fff; font-size: 28px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra reduzida */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 .wa-text {
     background: var(--card);
@@ -226,6 +235,17 @@ body {
     font-weight: 600;
     border: 1px solid var(--glass);
 }
+
+/* FOOTER CNPJ */
+.footer-main {
+    margin-top: 60px;
+    padding: 40px 0;
+    border-top: 1px solid var(--glass);
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+.footer-main p { margin-bottom: 5px; }
 
 .fade { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
 .fade.show { opacity: 1; transform: translateY(0); }
@@ -252,12 +272,13 @@ body {
         <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
            class="btn-cta"
            onclick="gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC'});">
-            <i class="fab fa-whatsapp"></i> Falar no WhatsApp agora
+            <i class="fab fa-whatsapp"></i> Resolver problema agora
         </a>
+        <span class="btn-microcopy">Descreva o problema e entenda o risco antes que ele aumente.</span>
     </div>
 
     <div class="symptoms-box fade">
-        <div class="symptoms-title">Identifique os sinais:</div>
+        <div class="symptoms-title">Sinais de Alerta:</div>
         <div class="symptoms-grid">
             <div class="symptom-item"><i class="fas fa-check"></i> Disjuntor desarmando sozinho</div>
             <div class="symptom-item"><i class="fas fa-check"></i> Cheiro de fio queimando</div>
@@ -265,7 +286,7 @@ body {
             <div class="symptom-item"><i class="fas fa-check"></i> Luz piscando ou oscilando</div>
         </div>
     </div>
-    <p class="micro-cta fade">Descreva o problema e receba uma orientação inicial</p>
+    <p class="safety-reinforcement fade">Diagnóstico técnico evita trocas desnecessárias e reduz riscos ocultos.</p>
 
     <div class="price-card fade">
         <div class="price-value">A partir de R$ 250</div>
@@ -291,11 +312,14 @@ body {
     </div>
 
     <div class="urgency-note fade">
-        Se o problema já ocorreu mais de uma vez, ele tende a piorar com o tempo. Não ignore os sinais de alerta da sua instalação.
+        Problemas elétricos raramente se resolvem sozinhos. Quando se repetem, tendem a piorar com o tempo. Não ignore os sinais de alerta.
     </div>
 
-    <footer class="footer fade" style="margin-top: 40px; text-align: center; border-top: 1px solid var(--glass); padding-top: 40px;">
-        <p style="color: var(--muted); font-size: 13px;">CWC Diagnóstico Elétrico | Porto Alegre e Região Metropolitana</p>
+    <footer class="footer-main fade">
+        <p><strong>CWC Diagnóstico Elétrico</strong></p>
+        <p>CNPJ: 24.683.232/0001-50</p>
+        <p>Telefone: (51) 99332-8805</p>
+        <p>Atendimento em Porto Alegre e região</p>
     </footer>
 
 </div>
@@ -303,7 +327,7 @@ body {
 <a class="whatsapp-float" id="wa-button"
    href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
    onclick="var url=this.href;gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC','event_callback':function(){window.location=url;}});return false;">
-    <div class="wa-text">Diagnóstico imediato</div>
+    <div class="wa-text">Resolver agora</div>
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
 </a>
 
@@ -316,7 +340,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.1 });
     document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 
-    // Atraso de exibição do botão flutuante
     setTimeout(() => {
         document.getElementById('wa-button').classList.add('ready');
     }, 2500);
