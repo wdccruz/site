@@ -4,162 +4,220 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CWC Diagnóstico Elétrico — Porto Alegre</title>
+<title>CWC Diagnóstico Elétrico — Engenharia de Diagnóstico em Porto Alegre</title>
 
-<meta name="description" content="Diagnóstico elétrico profissional em Porto Alegre. Disjuntor caindo, pane elétrica, cheiro de queimado. Atendimento técnico especializado.">
+<meta name="description" content="Engenharia de diagnóstico elétrico em Porto Alegre. Especialista em Moinhos de Vento e Bela Vista. Identificamos a causa real sem tentativa e erro.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17977221500"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-
 gtag('config', 'AW-17977221500');
 </script>
 
 <style>
-:root{
---bg:#0E0E0D;
---card:#151514;
---text:#FAFAF8;
---muted:#9B9A94;
---accent:#C9920A;
---green:#25D366;
+:root {
+    --bg: #0E0E0D;
+    --card: #151514;
+    --text: #FAFAF8;
+    --muted: #9B9A94;
+    --accent: #C9920A;
+    --green: #25D366;
+    --glass: rgba(255, 255, 255, 0.03);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-font-family:'DM Sans',sans-serif;
-background:linear-gradient(180deg,#0E0E0D,#121211);
-color:var(--text);
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:60px 24px;
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 80px 24px;
 }
 
-.hero h1{
-font-family:'DM Serif Display',serif;
-font-size:clamp(36px,6vw,64px);
-line-height:1.1;
-margin-bottom:16px;
+/* Badge Premium */
+.premium-tag {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    font-weight: 600;
 }
 
-.hero h1 em{
-color:var(--accent);
-font-style:italic;
+.hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 8vw, 68px);
+    line-height: 1.05;
+    margin-bottom: 20px;
 }
 
-.sub{
-color:var(--muted);
-font-size:18px;
-margin-bottom:32px;
+.hero h1 em {
+    color: var(--accent);
+    font-style: italic;
 }
 
-.btn{
-display:inline-block;
-background:var(--green);
-color:#000;
-padding:16px 32px;
-font-weight:600;
-text-decoration:none;
-transition:.2s;
+.sub {
+    color: var(--muted);
+    font-size: 20px;
+    margin-bottom: 40px;
+    max-width: 600px;
+    line-height: 1.5;
 }
 
-.btn:hover{
-transform:translateY(-2px);
-opacity:.9;
+/* Botão Flutuante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
-.card{
-background:var(--card);
-padding:24px;
-margin:20px 0;
-border:1px solid rgba(255,255,255,0.05);
-transition:.2s;
+.wa-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 32px;
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card:hover{
-transform:translateY(-3px);
-border-color:rgba(201,146,10,0.4);
+.wa-icon::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--green);
+    z-index: -1;
+    animation: wa-pulse 2s infinite;
 }
 
-.card strong{
-color:var(--accent);
-display:block;
-margin-bottom:10px;
+.wa-text {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin-top:10px;
-font-size:14px;
-color:var(--muted);
+.whatsapp-float:hover .wa-text {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.proof{
-margin-top:40px;
+.whatsapp-float:hover .wa-icon {
+    transform: scale(1.1);
 }
 
-.proof-title{
-font-size:12px;
-letter-spacing:2px;
-color:var(--muted);
-margin-bottom:12px;
+@keyframes wa-pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
 }
 
-.proof-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:6px;
+/* Cards e Estrutura */
+.card {
+    background: var(--card);
+    padding: 32px;
+    margin: 24px 0;
+    border: 1px solid var(--glass);
+    border-radius: 2px;
+    transition: .3s;
 }
 
-.proof-grid img{
-width:100%;
-height:80px;
-object-fit:cover;
-opacity:.85;
+.card:hover {
+    border-color: rgba(201,146,10,0.3);
+    background: #1a1a19;
 }
 
-.footer{
-margin-top:40px;
-font-size:12px;
-color:var(--muted);
-line-height:1.6;
+.card strong {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 12px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.fade{
-opacity:0;
-transform:translateY(20px);
-transition:all .6s ease;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--muted);
 }
 
-.fade.show{
-opacity:1;
-transform:translateY(0);
+.grid span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-@media(max-width:600px){
-.grid{grid-template-columns:1fr;}
-.proof-grid{grid-template-columns:repeat(2,1fr);}
+.grid span::before {
+    content: "→";
+    color: var(--accent);
+}
+
+.footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--glass);
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Animação Fade */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width:600px) {
+    .grid { grid-template-columns: 1fr; }
+    .wa-text { display: none; }
 }
 </style>
-
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-document.querySelectorAll(".fade").forEach((el,i)=>{
-setTimeout(()=>el.classList.add("show"), i*150);
-});
-});
-</script>
 
 </head>
 
@@ -167,49 +225,72 @@ setTimeout(()=>el.classList.add("show"), i*150);
 
 <div class="container">
 
-<div class="hero fade">
-<h1>
-Falha elétrica?<br>
-<em>Resolva com diagnóstico.</em>
-</h1>
+    <div class="hero fade">
+        <span class="premium-tag">Serviço Especializado — POA</span>
+        <h1>
+            Engenharia de<br>
+            <em>Diagnóstico Elétrico.</em>
+        </h1>
 
-<p class="sub">
-Atendimento técnico especializado em Porto Alegre.<br>
-Identificamos a causa real — sem tentativa e erro.
-</p>
+        <p class="sub">
+            Atendimento técnico de alta precisão em Porto Alegre.<br>
+            Identificamos falhas críticas em sistemas complexos, evitando custos ocultos e riscos de incêndio.
+        </p>
+    </div>
 
-<a class="btn"
-href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20um%20diagnóstico%20elétrico%20em%20Porto%20Alegre."
-onclick="var url=this.href;gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC','event_callback':function(){window.location=url;}});return false;">
-Falar com especialista
+    <div class="card fade">
+        <strong>Especialidade em Diagnóstico</strong>
+        Solucionamos: Quadros aquecendo, disjuntores desarmando sem motivo aparente, oscilações severas e falhas em circuitos de alta carga.
+    </div>
+
+    <div class="card fade">
+        <strong>O Diferencial Técnico</strong>
+        Diferente da abordagem comum de "troca de peças", nossa análise identifica a raiz do problema através de medições técnicas, garantindo segurança definitiva.
+    </div>
+
+    <div class="card fade">
+        <strong>Escopo de Atuação</strong>
+        <div class="grid">
+            <span>Laudo de Diagnóstico Técnico</span>
+            <span>Retrofit de Quadros Elétricos</span>
+            <span>Infraestrutura para Indução</span>
+            <span>Circuitos de Ar-Condicionado</span>
+            <span>Quadros de Comando e Proteção</span>
+            <span>Localização de Curto-Circuito</span>
+        </div>
+    </div>
+
+    <footer class="footer fade">
+        <p>CWC Diagnóstico Elétrico | Porto Alegre — RS</p>
+        <p>Atendimento exclusivo: Moinhos de Vento, Bela Vista, Auxiliadora e Região Metropolitana.</p>
+    </footer>
+
+</div>
+
+<a class="whatsapp-float" 
+   href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20técnico%20da%20minha%20rede%20elétrica."
+   onclick="var url=this.href;gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC','event_callback':function(){window.location=url;}});return false;">
+    <div class="wa-text">Especialista Online</div>
+    <div class="wa-icon">
+        <i class="fab fa-whatsapp"></i>
+    </div>
 </a>
-</div>
 
-<div class="card fade">
-<strong>Problemas que atendemos</strong>
-Disjuntor caindo, cheiro de queimado, pane elétrica, circuito parcial sem energia, quadro aquecendo, luz oscilando.
-</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add("show");
+                }, i * 100);
+            }
+        });
+    }, { threshold: 0.1 });
 
-<div class="card fade">
-<strong>O erro comum</strong>
-Trocar peças sem diagnóstico técnico.<br>
-Isso gera retrabalho, risco e custo desnecessário.
-</div>
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+});
+</script>
 
-<div class="card fade">
-<strong>Como resolvemos</strong>
-Diagnóstico completo da instalação elétrica com análise técnica profissional.<br>
-Identificamos a causa antes de qualquer intervenção.
-</div>
-
-<div class="card fade">
-<strong>Serviços realizados</strong>
-
-<div class="grid">
-<span>Diagnóstico elétrico completo</span>
-<span>Quadro de disjuntores</span>
-<span>Instalação fogão indução</span>
-<span>Instalação ar-condicionado</span>
-<span>Quadros de comando</span>
-<span>Correção curto-circuito</span>
-<span>Dimensionamento elét
+</body>
+</html>
