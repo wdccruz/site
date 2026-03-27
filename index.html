@@ -1,240 +1,260 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWC Diagnóstico Elétrico — Engenharia de Diagnóstico em Porto Alegre</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<title>CWC Diagnóstico Elétrico — Engenharia de Diagnóstico em Porto Alegre</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17977221500"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17977221500');
+    </script>
 
-<meta name="description" content="Engenharia de diagnóstico elétrico em Porto Alegre. Especialista em Moinhos de Vento e Bela Vista. Identificamos a causa real sem tentativa e erro.">
+    <style>
+        :root {
+            --bg: #0E0E0D;
+            --card: #151514;
+            --text: #FAFAF8;
+            --muted: #9B9A94;
+            --accent: #C9920A;
+            --green: #25D366;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17977221500"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-17977221500');
-</script>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-<style>
-:root {
-    --bg: #0E0E0D;
-    --card: #151514;
-    --text: #FAFAF8;
-    --muted: #9B9A94;
-    --accent: #C9920A;
-    --green: #25D366;
-    --glass: rgba(255, 255, 255, 0.03);
-}
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 80px 24px;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        .premium-tag {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
 
-body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(40px, 8vw, 68px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 80px 24px;
-}
+        h1 em { color: var(--accent); font-style: italic; }
 
-.premium-tag {
-    display: inline-block;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 4px;
-    margin-bottom: 24px;
-    font-weight: 600;
-}
+        .sub { color: var(--muted); font-size: 20px; margin-bottom: 40px; max-width: 600px; }
 
-.hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(40px, 8vw, 68px);
-    line-height: 1.05;
-    margin-bottom: 20px;
-}
+        h2 { font-family: 'DM Serif Display', serif; font-size: 32px; margin-bottom: 20px; color: var(--text); }
 
-.hero h1 em { color: var(--accent); font-style: italic; }
+        .section-block { margin-bottom: 80px; }
 
-.sub { color: var(--muted); font-size: 20px; margin-bottom: 40px; max-width: 600px; }
+        /* Estilo para Quem Somos / Missão */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
 
-/* Botão Flutuante WhatsApp */
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
+        .about-item h3 { color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .about-item p { color: var(--muted); font-size: 16px; }
 
-.wa-icon {
-    width: 64px;
-    height: 64px;
-    background: var(--green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 32px;
-    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        /* Cards de Serviço Detalhados */
+        .card {
+            background: var(--card);
+            padding: 32px;
+            margin: 20px 0;
+            border: 1px solid var(--glass);
+            border-radius: 4px;
+            transition: .3s;
+        }
 
-.wa-icon::after {
-    content: ""; position: absolute; width: 100%; height: 100%;
-    border-radius: 50%; background: var(--green); z-index: -1;
-    animation: wa-pulse 2s infinite;
-}
+        .card:hover { border-color: rgba(201,146,10,0.3); background: #1a1a19; }
 
-.wa-text {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px); color: #fff;
-    padding: 10px 20px; border-radius: 30px;
-    margin-right: 15px; font-size: 14px; font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0; transform: translateX(20px); transition: all 0.3s ease;
-}
+        .card strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-family: 'DM Serif Display', serif;
+        }
 
-.whatsapp-float:hover .wa-text { opacity: 1; transform: translateX(0); }
-.whatsapp-float:hover .wa-icon { transform: scale(1.1); }
+        .card p { color: var(--muted); font-size: 15px; margin-bottom: 15px; }
 
-@keyframes wa-pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.6); opacity: 0; }
-}
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text);
+        }
 
-/* Cards */
-.card {
-    background: var(--card); padding: 32px; margin: 24px 0;
-    border: 1px solid var(--glass); border-radius: 2px; transition: .3s;
-}
+        .service-list span::before { content: "•"; color: var(--accent); margin-right: 8px; font-weight: bold; }
 
-.card:hover { border-color: rgba(201,146,10,0.3); background: #1a1a19; }
+        /* Galeria */
+        .proof-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+        }
+        .proof-grid img {
+            width: 100%; height: 140px; object-fit: cover;
+            border-radius: 4px; border: 1px solid var(--glass);
+            opacity: 0.9; transition: all 0.4s ease;
+        }
+        .proof-grid img:hover { opacity: 1; transform: scale(1.05); border-color: var(--accent); }
 
-.card strong {
-    color: var(--accent); display: block; margin-bottom: 12px;
-    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
-}
+        /* Rodapé */
+        .footer {
+            margin-top: 100px;
+            padding: 60px 0;
+            border-top: 1px solid var(--glass);
+            text-align: center;
+        }
 
-.grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 16px; margin-top: 20px; font-size: 15px; color: var(--muted);
-}
+        .footer p { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+        .legal { font-size: 12px; opacity: 0.6; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
 
-.grid span { display: flex; align-items: center; gap: 8px; }
-.grid span::before { content: "→"; color: var(--accent); }
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 999;
+            display: flex; align-items: center; text-decoration: none;
+        }
+        .wa-icon {
+            width: 64px; height: 64px; background: var(--green);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-size: 32px;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
+        }
+        .wa-text {
+            background: #fff; color: #000; padding: 10px 20px; border-radius: 30px;
+            margin-right: 15px; font-size: 14px; font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 1; transform: translateX(0); transition: 0.3s;
+        }
 
-/* Galeria de Imagens - Ajustada para os seus arquivos */
-.proof { margin-top: 60px; }
-.proof-title {
-    font-size: 11px; letter-spacing: 2px; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 20px; font-weight: 600;
-}
-
-.proof-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-}
-
-.proof-grid img {
-    width: 100%; height: 120px; object-fit: cover;
-    border-radius: 4px; border: 1px solid var(--glass);
-    opacity: 0.9; transition: all 0.4s ease;
-}
-
-.proof-grid img:hover { opacity: 1; transform: scale(1.05); border-color: var(--accent); }
-
-.footer {
-    margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--glass);
-    font-size: 13px; color: var(--muted); text-align: center;
-}
-
-/* Animações */
-.fade { opacity: 0; transform: translateY(30px); transition: all .8s ease; }
-.fade.show { opacity: 1; transform: translateY(0); }
-
-@media(max-width:600px) {
-    .grid { grid-template-columns: 1fr; }
-    .wa-text { display: none; }
-    .proof-grid { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
+        @media(max-width:768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .service-list { grid-template-columns: 1fr; }
+            .proof-grid { grid-template-columns: repeat(2, 1fr); }
+            .wa-text { display: none; }
+        }
+    </style>
 </head>
 
 <body>
 <div class="container">
-    <div class="hero fade">
-        <span class="premium-tag">Serviço Especializado — Porto Alegre</span>
-        <h1>Engenharia de<br><em>Diagnóstico Elétrico.</em></h1>
-        <p class="sub">Identificamos falhas complexas em sistemas elétricos antes de qualquer intervenção desnecessária.</p>
-    </div>
+    
+    <header class="section-block">
+        <span class="premium-tag">Consultoria de Engenharia Diagnóstica</span>
+        <h1>Excelência em<br><em>Segurança Elétrica.</em></h1>
+        <p class="sub">Especialistas na identificação de causas raízes em sistemas elétricos complexos e de alto padrão em Porto Alegre.</p>
+    </header>
 
-    <div class="card fade">
-        <strong>Problemas Críticos</strong>
-        Disjuntores desarmando, quadros aquecendo e risco de pane elétrica.
-    </div>
-
-    <div class="card fade">
-        <strong>Especialidades</strong>
-        <div class="grid">
-            <span>Diagnóstico de Instalação</span>
-            <span>Retrofit de Quadros</span>
-            <span>Fogão Indução</span>
-            <span>Quadros de Comando</span>
+    <section class="section-block">
+        <h2>A CWC Diagnóstico</h2>
+        <div class="about-grid">
+            <div class="about-item">
+                <h3>Quem Somos</h3>
+                <p>Somos uma empresa técnica dedicada a elevar o padrão das instalações elétricas residenciais e comerciais. Fugimos do convencional "troca-peças", aplicando metodologia de engenharia para garantir a integridade do seu patrimônio.</p>
+            </div>
+            <div class="about-item">
+                <h3>Nossa Missão</h3>
+                <p>Proporcionar tranquilidade e segurança através de diagnósticos precisos. Nossa meta é eliminar riscos de incêndio e falhas críticas, otimizando investimentos e evitando manutenções corretivas desnecessárias.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="proof fade">
-        <div class="proof-title">Casos de Diagnóstico Atendidos</div>
+    <section class="section-block">
+        <h2>Especialidades Técnicas</h2>
+        
+        <div class="card">
+            <strong>Diagnóstico Preventivo e Corretivo</strong>
+            <p>Análise completa da saúde do sistema elétrico para identificar pontos de aquecimento, subdimensionamento e falhas ocultas.</p>
+            <div class="service-list">
+                <span>Termografia de painéis</span>
+                <span>Análise de quedas de tensão</span>
+                <span>Identificação de fugas de corrente</span>
+                <span>Laudo técnico detalhado</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <strong>Retrofit e Modernização</strong>
+            <p>Atualização de quadros elétricos antigos para os novos padrões de segurança e tecnologia, ideal para imóveis em bairros históricos.</p>
+            <div class="service-list">
+                <span>Organização de quadros (QDC)</span>
+                <span>Substituição de disjuntores obsoletos</span>
+                <span>Instalação de DPS e DR</span>
+                <span>Balanceamento de fases</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <strong>Instalações de Alta Potência</strong>
+            <p>Dimensionamento específico para equipamentos modernos que exigem estabilidade e segurança extrema.</p>
+            <div class="service-list">
+                <span>Fogões por Indução</span>
+                <span>Carregadores de veículos elétricos</span>
+                <span>Sistemas de Ar-condicionado Central</span>
+                <span>Redes de automação residencial</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-block">
+        <h2>Registros de Campo</h2>
         <div class="proof-grid">
-            <img src="qdc_1.JPG" alt="Quadro 1">
-            <img src="qdc_2.JPG" alt="Quadro 2">
-            <img src="qdc_3.JPG" alt="Quadro 3">
-            <img src="qdc_4.JPG" alt="Quadro 4">
-            <img src="comando_1.JPG" alt="Comando">
-            <img src="tomada_1.JPG" alt="Tomada">
-            <img src="ilumina_1.JPG" alt="Iluminação 1">
-            <img src="ilumina_2.JPG" alt="Iluminação 2">
-            <img src="antes_depois_1.PNG" alt="Antes e Depois">
+            <img src="Qdc_1.JPG" alt="Quadro Elétrico 1">
+            <img src="Qdc_2.JPG" alt="Quadro Elétrico 2">
+            <img src="Qdc_3.JPG" alt="Quadro Elétrico 3">
+            <img src="Qdc_4.JPG" alt="Quadro Elétrico 4">
+            <img src="Comando_1.JPG" alt="Quadro de Comando">
+            <img src="Tomada_1.JPG" alt="Instalação Especial">
+            <img src="Ilumina_1.JPG" alt="Projeto Iluminação">
+            <img src="Ilumina_2.JPG" alt="Projeto Iluminação 2">
+            <img src="Antes_depois_1.PNG" alt="Comparativo Antes e Depois">
         </div>
-    </div>
+    </section>
 
-    <footer class="footer fade">
-        <p>CWC Diagnóstico Elétrico | Porto Alegre — RS</p>
+    <footer class="footer">
+        <p><strong>CWC Diagnóstico Elétrico</strong></p>
+        <p>Moinhos de Vento • Bela Vista • Petrópolis • Auxiliadora • Porto Alegre</p>
+        <div class="legal">
+            <p>CNPJ: 50.844.755/0001-31</p>
+            <p>Responsabilidade Técnica e Rigor Normativo (NBR 5410)</p>
+            <p>© 2026 CWC Diagnóstico Elétrico.</p>
+        </div>
     </footer>
 </div>
 
-<a class="whatsapp-float" href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20um%20diagnóstico%20técnico." target="_blank">
-    <div class="wa-text">Especialista Online</div>
+<a class="whatsapp-float" href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20técnico." target="_blank">
+    <div class="wa-text">Falar com Especialista</div>
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
 </a>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("show");
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-});
-</script>
 </body>
 </html>
