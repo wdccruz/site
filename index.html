@@ -1,296 +1,113 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CWC Diagnóstico Elétrico — Engenharia de Diagnóstico em Porto Alegre</title>
-
-<meta name="description" content="Engenharia de diagnóstico elétrico em Porto Alegre. Especialista em Moinhos de Vento e Bela Vista. Identificamos a causa real sem tentativa e erro.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17977221500"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-17977221500');
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: #0E0E0D;
-    --card: #151514;
-    --text: #FAFAF8;
-    --muted: #9B9A94;
-    --accent: #C9920A;
-    --green: #25D366;
-    --glass: rgba(255, 255, 255, 0.03);
-}
+    :root {
+        --primary-color: #0f172a; /* Azul Marinho Dark */
+        --accent-color: #f59e0b;  /* Dourado/Âmbar */
+        --whatsapp-color: #25d366;
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; }
 
-body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-}
+    /* --- BOTÃO WHATSAPP PREMIUM --- */
+    .whatsapp-float {
+        position: fixed;
+        width: 65px;
+        height: 65px;
+        bottom: 30px;
+        right: 30px;
+        background-color: var(--whatsapp-color);
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255,255,255,0.2);
+    }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 80px 24px;
-}
+    /* Efeito de Ondas (Pulso) */
+    .whatsapp-float::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: var(--whatsapp-color);
+        opacity: 0.7;
+        z-index: -1;
+        animation: pulse-border 2s infinite;
+    }
 
-/* Badge Premium */
-.premium-tag {
-    display: inline-block;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 4px;
-    margin-bottom: 24px;
-    font-weight: 600;
-}
+    .whatsapp-float:hover {
+        transform: translateY(-5px) scale(1.05);
+        background-color: #20ba5a;
+        color: white;
+    }
 
-.hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(40px, 8vw, 68px);
-    line-height: 1.05;
-    margin-bottom: 20px;
-}
+    /* Tooltip "Especialista Online" */
+    .whatsapp-tooltip {
+        position: absolute;
+        right: 80px;
+        background: white;
+        color: #333;
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
 
-.hero h1 em {
-    color: var(--accent);
-    font-style: italic;
-}
+    .whatsapp-float:hover .whatsapp-tooltip {
+        opacity: 1;
+    }
 
-.sub {
-    color: var(--muted);
-    font-size: 20px;
-    margin-bottom: 40px;
-    max-width: 600px;
-    line-height: 1.5;
-}
+    @keyframes pulse-border {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(1.6); opacity: 0; }
+    }
 
-/* Botão Flutuante WhatsApp */
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
+    /* --- MELHORIAS NO CONTEÚDO --- */
+    .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+    }
 
-.wa-icon {
-    width: 64px;
-    height: 64px;
-    background: var(--green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 32px;
-    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    .premium-badge {
+        display: inline-block;
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--accent-color);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border: 1px solid var(--accent-color);
+    }
 
-.wa-icon::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: var(--green);
-    z-index: -1;
-    animation: wa-pulse 2s infinite;
-}
-
-.wa-text {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 30px;
-    margin-right: 15px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-.whatsapp-float:hover .wa-text {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.whatsapp-float:hover .wa-icon {
-    transform: scale(1.1);
-}
-
-@keyframes wa-pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.6); opacity: 0; }
-}
-
-/* Cards e Estrutura */
-.card {
-    background: var(--card);
-    padding: 32px;
-    margin: 24px 0;
-    border: 1px solid var(--glass);
-    border-radius: 2px;
-    transition: .3s;
-}
-
-.card:hover {
-    border-color: rgba(201,146,10,0.3);
-    background: #1a1a19;
-}
-
-.card strong {
-    color: var(--accent);
-    display: block;
-    margin-bottom: 12px;
-    font-size: 13px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 20px;
-    font-size: 15px;
-    color: var(--muted);
-}
-
-.grid span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.grid span::before {
-    content: "→";
-    color: var(--accent);
-}
-
-.footer {
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid var(--glass);
-    font-size: 13px;
-    color: var(--muted);
-    text-align: center;
-}
-
-/* Animação Fade */
-.fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all .8s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.fade.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@media(max-width:600px) {
-    .grid { grid-template-columns: 1fr; }
-    .wa-text { display: none; }
-}
+    h1 { font-weight: 700; font-size: 2.5rem; margin-bottom: 10px; }
+    
+    .cta-button {
+        background: var(--accent-color);
+        color: #000 !important;
+        font-weight: bold;
+        padding: 15px 35px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
 </style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-    <div class="hero fade">
-        <span class="premium-tag">Serviço Especializado — POA</span>
-        <h1>
-            Engenharia de<br>
-            <em>Diagnóstico Elétrico.</em>
-        </h1>
-
-        <p class="sub">
-            Atendimento técnico de alta precisão em Porto Alegre.<br>
-            Identificamos falhas críticas em sistemas complexos, evitando custos ocultos e riscos de incêndio.
-        </p>
-    </div>
-
-    <div class="card fade">
-        <strong>Especialidade em Diagnóstico</strong>
-        Solucionamos: Quadros aquecendo, disjuntores desarmando sem motivo aparente, oscilações severas e falhas em circuitos de alta carga.
-    </div>
-
-    <div class="card fade">
-        <strong>O Diferencial Técnico</strong>
-        Diferente da abordagem comum de "troca de peças", nossa análise identifica a raiz do problema através de medições técnicas, garantindo segurança definitiva.
-    </div>
-
-    <div class="card fade">
-        <strong>Escopo de Atuação</strong>
-        <div class="grid">
-            <span>Laudo de Diagnóstico Técnico</span>
-            <span>Retrofit de Quadros Elétricos</span>
-            <span>Infraestrutura para Indução</span>
-            <span>Circuitos de Ar-Condicionado</span>
-            <span>Quadros de Comando e Proteção</span>
-            <span>Localização de Curto-Circuito</span>
-        </div>
-    </div>
-
-    <footer class="footer fade">
-        <p>CWC Diagnóstico Elétrico | Porto Alegre — RS</p>
-        <p>Atendimento exclusivo: Moinhos de Vento, Bela Vista, Auxiliadora e Região Metropolitana.</p>
-    </footer>
-
-</div>
-
-<a class="whatsapp-float" 
-   href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20técnico%20da%20minha%20rede%20elétrica."
-   onclick="var url=this.href;gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC','event_callback':function(){window.location=url;}});return false;">
-    <div class="wa-text">Especialista Online</div>
-    <div class="wa-icon">
-        <i class="fab fa-whatsapp"></i>
-    </div>
-</a>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add("show");
-                }, i * 100);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-});
-</script>
-
-</body>
-</html>
