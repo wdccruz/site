@@ -58,6 +58,7 @@ body {
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .hero h1 {
@@ -129,54 +130,114 @@ body {
     backdrop-filter: blur(4px);
 }
 
-.card { background: var(--card); padding: 30px; margin: 20px 0; border: 1px solid var(--glass); }
+.card { 
+    background: var(--card); 
+    padding: 35px; 
+    margin: 25px 0; 
+    border: 1px solid var(--glass); 
+    border-left: 3px solid var(--accent); /* Detalhe para dar destaque técnico */
+}
+
+.card strong {
+    color: var(--accent); 
+    display: block; 
+    margin-bottom: 12px;
+    font-size: 13px; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase;
+}
+
+.card p {
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.grid {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; 
+    margin-top: 20px; 
+    font-size: 14px; 
+    color: var(--muted);
+}
+
+.grid span { display: flex; align-items: center; gap: 8px; }
+.grid span::before { content: "✓"; color: var(--accent); font-weight: bold; }
 
 .footer { margin-top: 60px; padding: 40px 0; border-top: 1px solid var(--glass); text-align: center; color: var(--muted); font-size: 12px; }
 
+.fade { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+.fade.show { opacity: 1; transform: translateY(0); }
+
 @media(max-width:600px) {
-    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    .grid { grid-template-columns: 1fr; }
     .wa-text { display: none; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 
 <body>
 <div class="container">
-    <div class="hero">
-        <span class="premium-tag">Porto Alegre — RS</span>
+    <div class="hero fade">
+        <span class="premium-tag">Atendimento Técnico Especializado</span>
         <h1>Engenharia de<br><em>Diagnóstico Elétrico.</em></h1>
-        <p style="color:var(--muted); font-size:18px; margin-bottom:40px;">Identificamos a causa real de falhas elétricas com precisão técnica.</p>
+        <p style="color:var(--muted); font-size:20px; margin-bottom:40px; font-weight: 300;">
+            Soluções definitivas para falhas críticas. Porto Alegre e Região Metropolitana.
+        </p>
     </div>
 
-    <div class="card">
-        <strong style="color:var(--accent); text-transform:uppercase; font-size:12px; display:block; margin-bottom:10px;">O que fazemos</strong>
-        <p>Diagnóstico de quadros aquecendo, disjuntores caindo e correção de curto-circuito em instalações complexas.</p>
-    </div>
-
-    <div class="proof">
-        <h2 class="proof-title">Registros Técnicos</h2>
-        <div class="proof-grid">
-            <div><img src="qdc_1.JPG"><span class="img-label">Quadro 1</span></div>
-            <div><img src="qdc_2.JPG"><span class="img-label">Quadro 2</span></div>
-            <div><img src="qdc_3.JPG"><span class="img-label">Quadro 3</span></div>
-            <div><img src="qdc_4.JPG"><span class="img-label">Quadro 4</span></div>
-            <div><img src="comando_1.JPG"><span class="img-label">Comando</span></div>
-            <div><img src="tomada_1.JPG"><span class="img-label">Tomada</span></div>
-            <div><img src="ilumina_1.JPG"><span class="img-label">Iluminação 1</span></div>
-            <div><img src="ilumina_2.JPG"><span class="img-label">Iluminação 2</span></div>
-            <div><img src="antes_depois_1.PNG"><span class="img-label">Comparativo</span></div>
+    <div class="card fade">
+        <strong>Expertise Técnica</strong>
+        <p>Atuamos onde o eletricista comum não chega. Identificamos aquecimentos em quadros, oscilações severas e falhas em circuitos de alta carga através de instrumentação profissional.</p>
+        <div class="grid">
+            <span>Análise de Aquecimento (Termografia)</span>
+            <span>Estabilização de Redes Oscilantes</span>
+            <span>Retrofit e Organização de Quadros (QDC)</span>
+            <span>Instalações de Alta Potência (Indução/EV)</span>
         </div>
     </div>
 
-    <footer class="footer">
-        <p>CWC Diagnóstico Elétrico | Moinhos de Vento, Bela Vista e Região.</p>
+    <div class="card fade" style="border-left-color: #333;">
+        <strong>Segurança & Patrimônio</strong>
+        <p>O diagnóstico técnico evita a substituição desnecessária de peças e elimina riscos reais de curto-circuito e incêndio elétrico. Proteja sua família e seus equipamentos.</p>
+    </div>
+
+    <div class="proof fade">
+        <h2 class="proof-title">Registros de Campo</h2>
+        <div class="proof-grid">
+            <div><img src="qdc_1.JPG"><span class="img-label">Análise QDC</span></div>
+            <div><img src="qdc_2.JPG"><span class="img-label">Painel Técnico</span></div>
+            <div><img src="qdc_3.JPG"><span class="img-label">Proteção Ativa</span></div>
+            <div><img src="qdc_4.JPG"><span class="img-label">Certificação</span></div>
+            <div><img src="comando_1.JPG"><span class="img-label">Comando</span></div>
+            <div><img src="tomada_1.JPG"><span class="img-label">Carga Especial</span></div>
+            <div><img src="ilumina_1.JPG"><span class="img-label">Iluminação</span></div>
+            <div><img src="ilumina_2.JPG"><span class="img-label">Automação</span></div>
+            <div><img src="antes_depois_1.PNG"><span class="img-label">Antes vs Depois</span></div>
+        </div>
+    </div>
+
+    <footer class="footer fade">
+        <p>CWC Diagnóstico Elétrico | Atendimento exclusivo: Moinhos de Vento, Bela Vista, Auxiliadora e Região Metropolitana.</p>
     </footer>
 </div>
 
-<a class="whatsapp-float" href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico." target="_blank">
+<a class="whatsapp-float" href="https://wa.me/5551993328805?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20técnico." target="_blank">
     <div class="wa-text">Falar com Especialista</div>
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
 </a>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+    });
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+});
+</script>
 </body>
 </html>
