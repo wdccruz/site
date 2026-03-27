@@ -42,7 +42,7 @@
         .container {
             max-width: 900px;
             margin: auto;
-            padding: 80px 24px;
+            padding: 60px 24px;
         }
 
         .premium-tag {
@@ -60,54 +60,47 @@
 
         h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(40px, 8vw, 64px);
+            font-size: clamp(36px, 8vw, 64px);
             line-height: 1.1;
             margin-bottom: 20px;
         }
 
         h1 em { color: var(--accent); font-style: italic; }
 
-        .sub { color: var(--muted); font-size: 20px; margin-bottom: 60px; max-width: 700px; }
+        .sub { color: var(--muted); font-size: 19px; margin-bottom: 60px; max-width: 700px; }
 
-        h2 { font-family: 'DM Serif Display', serif; font-size: 36px; margin-bottom: 30px; }
+        h2 { font-family: 'DM Serif Display', serif; font-size: 32px; margin-bottom: 24px; }
 
-        .section-block { margin-bottom: 100px; }
+        .section-block { margin-bottom: 80px; }
 
-        .about-text {
-            color: var(--muted);
-            font-size: 17px;
-            margin-bottom: 40px;
-        }
+        .about-text { color: var(--muted); font-size: 17px; margin-bottom: 30px; }
 
         .mission-box {
             background: var(--card);
-            border-left: 4px solid var(--accent);
-            padding: 30px;
+            border-left: 3px solid var(--accent);
+            padding: 24px;
             font-style: italic;
+            margin: 30px 0;
         }
 
-        /* Serviços */
-        .service-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        /* Especialidades */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .service-card {
             background: var(--card);
-            padding: 40px;
+            padding: 30px;
             border: 1px solid var(--glass);
             border-radius: 4px;
         }
-        .service-card h3 {
-            color: var(--accent);
-            font-family: 'DM Serif Display', serif;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        .service-card ul { list-style: none; margin-top: 20px; }
-        .service-card li::before { content: "→"; color: var(--accent); margin-right: 10px; }
+        .service-card h3 { color: var(--accent); font-size: 20px; margin-bottom: 15px; }
+        .service-card ul { list-style: none; }
+        .service-card li::before { content: "→"; color: var(--accent); margin-right: 10px; font-weight: bold; }
 
-        /* Galeria Corrigida com nomes exatos do GitHub */
+        /* Galeria Blindada */
         .proof-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
+            margin-top: 20px;
         }
         .proof-grid img {
             width: 100%;
@@ -115,6 +108,7 @@
             object-fit: cover;
             border-radius: 4px;
             border: 1px solid var(--glass);
+            background: #222; /* Fundo caso a imagem falhe */
         }
 
         /* Footer */
@@ -134,15 +128,16 @@
         .wa-text {
             background: white; color: black; padding: 12px 20px;
             border-radius: 30px; margin-right: 15px; font-weight: 700;
-            font-size: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            font-size: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         .wa-icon {
             width: 64px; height: 64px; background: var(--green);
             border-radius: 50%; display: flex; align-items: center;
             justify-content: center; color: white; font-size: 32px;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .proof-grid { grid-template-columns: repeat(2, 1fr); }
             .wa-text { display: none; }
         }
@@ -154,39 +149,36 @@
     
     <header class="section-block">
         <span class="premium-tag">Consultoria Técnica Especializada</span>
-        <h1>Alta Precisão em<br><em>Segurança Elétrica.</em></h1>
-        <p class="sub">A CWC Diagnóstico Elétrico foca na identificação de causas raízes em sistemas elétricos de alto padrão em Porto Alegre.</p>
+        <h1>Precisão em<br><em>Segurança Elétrica.</em></h1>
+        <p class="sub">Especialistas na identificação de falhas e diagnósticos técnicos para residências e comércios de alto padrão em Porto Alegre.</p>
     </header>
 
     <section class="section-block">
         <h2>A CWC Diagnóstico</h2>
         <div class="about-text">
-            Acreditamos que uma instalação segura começa com um diagnóstico técnico rigoroso. Atuamos com consultoria baseada em evidências e medições para garantir a integridade do seu patrimônio e a segurança da sua família.
+            Nossa atuação é focada em consultoria técnica baseada em evidências. Identificamos o que está oculto na sua instalação para garantir a proteção do seu patrimônio.
         </div>
         <div class="mission-box">
-            "Nossa missão é eliminar a incerteza das instalações elétricas através da precisão técnica e do diagnóstico preventivo."
+            "Missão: Proporcionar segurança e tranquilidade através de diagnósticos precisos e soluções normatizadas."
         </div>
     </section>
 
     <section class="section-block">
-        <h2>Nossas Especialidades</h2>
+        <h2>Especialidades</h2>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Diagnóstico Técnico</h3>
                 <ul>
-                    <li>Termografia de painéis</li>
-                    <li>Análise de Instalações Antigas</li>
-                    <li>Localização de Curto-Circuito</li>
-                    <li>Identificação de Aquecimento Crítico</li>
+                    <li>Termografia (Pontos Quentes)</li>
+                    <li>Análise de Redes Antigas</li>
+                    <li>Localização de Curtos</li>
                 </ul>
             </div>
-
             <div class="service-card">
-                <h3>Modernização & Retrofit</h3>
+                <h3>Modernização</h3>
                 <ul>
-                    <li>Organização de Quadros (QDC)</li>
-                    <li>Instalação de DPS e DR</li>
-                    <li>Redimensionamento de Cargas</li>
+                    <li>Retrofit de Quadros (QDC)</li>
+                    <li>Instalação de DPS/DR</li>
                     <li>Normatização NBR 5410</li>
                 </ul>
             </div>
@@ -194,25 +186,25 @@
     </section>
 
     <section class="section-block">
-        <h2>Registros de Campo</h2>
+        <h2>Registros Técnicos</h2>
         <div class="proof-grid">
-            <img src="Qdc_1.JPG" alt="Quadro 1">
-            <img src="Qdc_2.JPG" alt="Quadro 2">
-            <img src="Qdc_3.JPG" alt="Quadro 3">
-            <img src="Qdc_4.JPG" alt="Quadro 4">
-            <img src="Comando_1.JPG" alt="Comando">
-            <img src="Tomada_1.JPG" alt="Tomada">
-            <img src="Ilumina_1.JPG" alt="Ilumina 1">
-            <img src="Ilumina_2.JPG" alt="Ilumina 2">
-            <img src="Antes_depois_1.PNG" alt="Antes e Depois">
+            <img src="./Qdc_1.JPG" alt="Quadro 1">
+            <img src="./Qdc_2.JPG" alt="Quadro 2">
+            <img src="./Qdc_3.JPG" alt="Quadro 3">
+            <img src="./Qdc_4.JPG" alt="Quadro 4">
+            <img src="./Comando_1.JPG" alt="Comando">
+            <img src="./Tomada_1.JPG" alt="Tomada">
+            <img src="./Ilumina_1.JPG" alt="Iluminação 1">
+            <img src="./Ilumina_2.JPG" alt="Iluminação 2">
+            <img src="./Antes_depois_1.PNG" alt="Comparativo">
         </div>
     </section>
 
     <footer>
         <div class="footer-brand">CWC Diagnóstico Elétrico</div>
         <p>Porto Alegre • Moinhos de Vento • Bela Vista • Petrópolis</p>
-        <p style="margin-top:20px; font-size: 12px;">CNPJ: 50.844.755/0001-31</p>
-        <p style="font-size: 12px; opacity: 0.6;">© 2026 CWC Diagnóstico Elétrico.</p>
+        <p style="margin-top:20px; font-size: 12px; opacity: 0.8;">CNPJ: 50.844.755/0001-31</p>
+        <p style="font-size: 11px; opacity: 0.5; margin-top: 10px;">© 2026 CWC Diagnóstico Elétrico.</p>
     </footer>
 
 </div>
