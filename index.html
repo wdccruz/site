@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CWC Diagnóstico Elétrico — Engenharia de Diagnóstico em Porto Alegre</title>
+<title>CWC Diagnóstico Elétrico — Engenharia de Diagnóstico</title>
 
-<meta name="description" content="Engenharia de diagnóstico elétrico em Porto Alegre. Especialista em Moinhos de Vento e Bela Vista. Identificamos a causa real sem tentativa e erro.">
+<meta name="description" content="Engenharia de diagnóstico elétrico em Porto Alegre. Especialista em Moinhos de Vento e Bela Vista.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,13 +52,12 @@ body {
     display: inline-block;
     border: 1px solid var(--accent);
     color: var(--accent);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     padding: 6px 14px;
     border-radius: 4px;
     margin-bottom: 24px;
+    font-size: 11px;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .hero h1 {
@@ -70,9 +69,7 @@ body {
 
 .hero h1 em { color: var(--accent); font-style: italic; }
 
-.sub { color: var(--muted); font-size: 19px; margin-bottom: 40px; max-width: 600px; }
-
-/* Botão WhatsApp Flutuante */
+/* Botão WhatsApp Premium */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -84,24 +81,13 @@ body {
 }
 
 .wa-icon {
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     background: var(--green);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 30px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 30px;
     box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.wa-icon::after {
-    content: ""; position: absolute; width: 100%; height: 100%;
-    border-radius: 50%; background: var(--green); z-index: -1;
-    animation: wa-pulse 2s infinite;
+    transition: 0.3s;
 }
 
 .wa-text {
@@ -110,112 +96,80 @@ body {
     padding: 8px 18px; border-radius: 30px;
     margin-right: 12px; font-size: 13px; font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0; transform: translateX(10px); transition: all 0.3s ease;
+    opacity: 0; transform: translateX(10px); transition: 0.3s;
 }
 
 .whatsapp-float:hover .wa-text { opacity: 1; transform: translateX(0); }
 .whatsapp-float:hover .wa-icon { transform: scale(1.1); }
 
-@keyframes wa-pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.5); opacity: 0; }
-}
-
-/* Cards */
-.card {
-    background: var(--card); padding: 30px; margin: 20px 0;
-    border: 1px solid var(--glass); border-radius: 4px; transition: .3s;
-}
-
-.card:hover { border-color: rgba(201,146,10,0.3); }
-
-.card strong {
-    color: var(--accent); display: block; margin-bottom: 10px;
-    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-}
-
-.grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 12px; margin-top: 15px; font-size: 15px; color: var(--muted);
-}
-
-.grid span::before { content: "• "; color: var(--accent); }
-
-/* Galeria de Imagens com Nomes Corrigidos */
+/* Grid de Registros Técnicos */
 .proof { margin-top: 50px; }
 .proof-title {
-    font-size: 11px; letter-spacing: 2px; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 20px; font-weight: 600;
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px; margin-bottom: 25px;
 }
 
 .proof-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
 }
+
+.proof-grid div { position: relative; border-radius: 8px; overflow: hidden; height: 160px; background: #222; }
 
 .proof-grid img {
-    width: 100%; height: 110px; object-fit: cover;
-    border-radius: 3px; border: 1px solid var(--glass);
-    transition: 0.3s;
+    width: 100%; height: 100%; object-fit: cover;
+    transition: 0.5s;
 }
 
-.proof-grid img:hover { transform: translateY(-5px); border-color: var(--accent); }
+.proof-grid div:hover img { transform: scale(1.1); }
 
-.footer {
-    margin-top: 60px; padding-bottom: 40px; border-top: 1px solid var(--glass);
-    font-size: 12px; color: var(--muted); text-align: center; padding-top: 30px;
+.img-label {
+    position: absolute; bottom: 8px; left: 8px;
+    background: rgba(0,0,0,0.6); color: #fff;
+    padding: 4px 8px; font-size: 10px; border-radius: 4px;
+    backdrop-filter: blur(4px);
 }
 
-.fade { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-.fade.show { opacity: 1; transform: translateY(0); }
+.card { background: var(--card); padding: 30px; margin: 20px 0; border: 1px solid var(--glass); }
+
+.footer { margin-top: 60px; padding: 40px 0; border-top: 1px solid var(--glass); text-align: center; color: var(--muted); font-size: 12px; }
 
 @media(max-width:600px) {
-    .grid { grid-template-columns: 1fr; }
-    .wa-text { display: none; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    .wa-text { display: none; }
 }
 </style>
 </head>
 
 <body>
 <div class="container">
-    <div class="hero fade">
+    <div class="hero">
         <span class="premium-tag">Porto Alegre — RS</span>
         <h1>Engenharia de<br><em>Diagnóstico Elétrico.</em></h1>
-        <p class="sub">Especialista em identificar causas reais de falhas elétricas em residências de alto padrão.</p>
+        <p style="color:var(--muted); font-size:18px; margin-bottom:40px;">Identificamos a causa real de falhas elétricas com precisão técnica.</p>
     </div>
 
-    <div class="card fade">
-        <strong>O que resolvemos</strong>
-        Disjuntores desarmando, cheiro de queimado, oscilações severas e quadros aquecendo.
+    <div class="card">
+        <strong style="color:var(--accent); text-transform:uppercase; font-size:12px; display:block; margin-bottom:10px;">O que fazemos</strong>
+        <p>Diagnóstico de quadros aquecendo, disjuntores caindo e correção de curto-circuito em instalações complexas.</p>
     </div>
 
-    <div class="card fade">
-        <strong>Nossas Especialidades</strong>
-        <div class="grid">
-            <span>Diagnóstico com Termografia</span>
-            <span>Retrofit de Quadros (QDC)</span>
-            <span>Instalação de Fogão Indução</span>
-            <span>Quadros de Comando</span>
-        </div>
-    </div>
-
-    <div class="proof fade">
-        <div class="proof-title">Casos de Sucesso</div>
+    <div class="proof">
+        <h2 class="proof-title">Registros Técnicos</h2>
         <div class="proof-grid">
-            <img src="qdc_1.JPG" alt="QDC">
-            <img src="qdc_2.JPG" alt="QDC">
-            <img src="qdc_3.JPG" alt="QDC">
-            <img src="qdc_4.JPG" alt="QDC">
-            <img src="comando_1.JPG" alt="Comando">
-            <img src="tomada_1.JPG" alt="Tomada">
-            <img src="ilumina_1.JPG" alt="Luz">
-            <img src="ilumina_2.JPG" alt="Luz">
-            <img src="antes_depois_1.PNG" alt="Antes e Depois">
+            <div><img src="qdc_1.JPG"><span class="img-label">Quadro 1</span></div>
+            <div><img src="qdc_2.JPG"><span class="img-label">Quadro 2</span></div>
+            <div><img src="qdc_3.JPG"><span class="img-label">Quadro 3</span></div>
+            <div><img src="qdc_4.JPG"><span class="img-label">Quadro 4</span></div>
+            <div><img src="comando_1.JPG"><span class="img-label">Comando</span></div>
+            <div><img src="tomada_1.JPG"><span class="img-label">Tomada</span></div>
+            <div><img src="ilumina_1.JPG"><span class="img-label">Iluminação 1</span></div>
+            <div><img src="ilumina_2.JPG"><span class="img-label">Iluminação 2</span></div>
+            <div><img src="antes_depois_1.PNG"><span class="img-label">Comparativo</span></div>
         </div>
     </div>
 
-    <footer class="footer fade">
-        <p>CWC Diagnóstico Elétrico | Atendimento: Moinhos de Vento, Bela Vista e Região.</p>
+    <footer class="footer">
+        <p>CWC Diagnóstico Elétrico | Moinhos de Vento, Bela Vista e Região.</p>
     </footer>
 </div>
 
@@ -224,15 +178,5 @@ body {
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
 </a>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("show");
-        });
-    });
-    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-});
-</script>
 </body>
 </html>
