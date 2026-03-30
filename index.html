@@ -15,10 +15,25 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17977221500"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-17977221500');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17977221500');
+</script>
+
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17977221500/OOBqCMaBm44cEPzCmvxC',
+      'event_callback': callback
+  });
+  return false;
+}
 </script>
 
 <style>
@@ -271,7 +286,7 @@ body {
         
         <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
            class="btn-cta"
-           onclick="gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC'});">
+           onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
             <i class="fab fa-whatsapp"></i> Resolver problema agora
         </a>
         <span class="btn-microcopy">Descreva o problema e entenda o risco antes que ele aumente.</span>
@@ -326,7 +341,7 @@ body {
 
 <a class="whatsapp-float" id="wa-button"
    href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
-   onclick="var url=this.href;gtag('event','conversion',{'send_to':'AW-17977221500/OOBqCMaBm44cEPzCmvxC','event_callback':function(){window.location=url;}});return false;">
+   onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
     <div class="wa-text">Resolver agora</div>
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
 </a>
