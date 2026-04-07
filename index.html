@@ -19,7 +19,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-JLCZT1CL46'); // Analytics
   gtag('config', 'AW-17977221500'); // Google Ads
 </script>
@@ -89,6 +88,7 @@ body {
     letter-spacing: 2px;
 }
 
+/* HERO */
 .hero { text-align: left; padding-bottom: 40px; }
 .hero h1 {
     font-family: 'DM Serif Display', serif;
@@ -111,6 +111,7 @@ body {
     max-width: 700px;
 }
 
+/* BOTÃO CTA */
 .btn-cta {
     display: inline-flex;
     align-items: center;
@@ -127,6 +128,7 @@ body {
 }
 .btn-cta:hover { opacity: 0.9; transform: translateY(-2px); }
 
+/* MICROCOPY BOTÃO */
 .btn-microcopy {
     display: block;
     font-size: 13px;
@@ -135,6 +137,7 @@ body {
     font-style: italic;
 }
 
+/* SEÇÃO DE SINTOMAS */
 .symptoms-box {
     background: var(--card);
     border: 1px solid var(--glass);
@@ -142,7 +145,125 @@ body {
     border-radius: 4px;
     margin-bottom: 20px;
 }
+.symptoms-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.symptoms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.symptom-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: var(--text);
+}
+.symptom-item i { color: var(--accent); font-size: 12px; }
 
+/* REFORÇO SEGURANÇA */
+.safety-reinforcement {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* BLOCO DE PREÇO */
+.price-card {
+    background: var(--card);
+    border: 1px solid var(--glass);
+    padding: 30px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 40px 0;
+}
+.price-value { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.price-info { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 15px; letter-spacing: 1px; }
+.price-desc { color: var(--muted); font-size: 15px; }
+
+/* URGÊNCIA SUAVE */
+.urgency-note {
+    border-left: 2px solid var(--accent);
+    padding: 15px 25px;
+    margin: 40px 0;
+    background: rgba(201, 146, 10, 0.03);
+    color: var(--text);
+    font-size: 15px;
+}
+
+/* CARDS GERAIS */
+.card {
+    background: var(--card);
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid var(--glass);
+    border-radius: 4px;
+}
+.card strong {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* GALERIA */
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+.proof-grid div { position: relative; border-radius: 4px; overflow: hidden; height: 160px; background: #222; }
+.proof-grid img { width: 100%; height: 100%; object-fit: cover; }
+.img-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.7); color: #fff;
+    padding: 6px; font-size: 11px; text-align: center;
+}
+
+/* WHATSAPP FLUTUANTE */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.5s ease 2s;
+}
+.whatsapp-float.ready { opacity: 1; }
+
+.wa-icon {
+    width: 56px; height: 56px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 28px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.wa-text {
+    background: var(--card);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 4px;
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid var(--glass);
+}
+
+/* FOOTER */
 .footer-main {
     margin-top: 60px;
     padding: 40px 0;
@@ -151,6 +272,17 @@ body {
     color: var(--muted);
     font-size: 12px;
 }
+.footer-main p { margin-bottom: 5px; }
+
+.fade { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.fade.show { opacity: 1; transform: translateY(0); }
+
+@media(max-width:600px) {
+    .symptoms-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    .wa-text { display: none; }
+    .hero { text-align: center; }
+}
 </style>
 </head>
 
@@ -158,26 +290,88 @@ body {
 
 <div class="container">
 
-    <div class="hero">
+    <div class="hero fade">
         <span class="premium-tag">Porto Alegre e Região</span>
         <h1>⚠️ Disjuntor caindo ou<br><em>cheiro de queimado?</em></h1>
         <span class="focus-text">Atendimento para falhas reais: disjuntor caindo, cheiro de queimado e quedas de energia.</span>
         <p class="sub">Diagnóstico elétrico especializado para identificar a causa exata do problema antes que ele se torne um prejuízo irreparável.</p>
-
-        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico e preciso de diagnóstico."
+        
+        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
            class="btn-cta"
-           onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico e preciso de diagnóstico.');">
-           Resolver problema agora
+           onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
+            <i class="fab fa-whatsapp"></i> Resolver problema agora
         </a>
+        <span class="btn-microcopy">Descreva o problema e entenda o risco antes que ele aumente.</span>
     </div>
 
-    <footer class="footer-main">
+    <div class="symptoms-box fade">
+        <div class="symptoms-title">Sinais de Alerta:</div>
+        <div class="symptoms-grid">
+            <div class="symptom-item"><i class="fas fa-check"></i> Disjuntor desarmando sozinho</div>
+            <div class="symptom-item"><i class="fas fa-check"></i> Cheiro de fio queimando</div>
+            <div class="symptom-item"><i class="fas fa-check"></i> Parte da casa sem energia</div>
+            <div class="symptom-item"><i class="fas fa-check"></i> Luz piscando ou oscilando</div>
+        </div>
+    </div>
+    <p class="safety-reinforcement fade">Diagnóstico técnico evita trocas desnecessárias e reduz riscos ocultos.</p>
+
+    <div class="price-card fade">
+        <div class="price-value">A partir de R$ 250</div>
+        <div class="price-info">VALOR 100% ABATIDO NO SERVIÇO</div>
+        <p class="price-desc">Identificamos a causa real da falha com instrumentação técnica profissional, evitando gastos por tentativa e erro.</p>
+    </div>
+
+    <div class="card fade">
+        <strong>Diagnóstico Técnico Especializado</strong>
+        <p>Atuamos com termografia e análise de rede para encontrar o que o eletricista comum não vê. Foco total em precisão e segurança normativa.</p>
+    </div>
+
+    <div class="proof fade">
+        <strong style="color: var(--accent); letter-spacing: 1px; text-transform: uppercase; font-size: 13px;">Registros Técnicos</strong>
+        <div class="proof-grid">
+            <div><img src="qdc_1.JPG"><span class="img-label">Análise Técnica</span></div>
+            <div><img src="qdc_2.JPG"><span class="img-label">Verificação QDC</span></div>
+            <div><img src="qdc_3.JPG"><span class="img-label">Diagnóstico Final</span></div>
+            <div><img src="comando_1.JPG"><span class="img-label">Comandos</span></div>
+            <div><img src="tomada_1.JPG"><span class="img-label">Ponto Crítico</span></div>
+            <div><img src="antes_depois_1.PNG"><span class="img-label">Resultado</span></div>
+        </div>
+    </div>
+
+    <div class="urgency-note fade">
+        Problemas elétricos raramente se resolvem sozinhos. Quando se repetem, tendem a piorar com o tempo. Não ignore os sinais de alerta.
+    </div>
+
+    <footer class="footer-main fade">
         <p><strong>CWC Diagnóstico Elétrico</strong></p>
+        <p>CNPJ: 24.683.232/0001-50</p>
         <p>Telefone: (51) 99332-8805</p>
         <p>Atendimento em Porto Alegre e região</p>
     </footer>
 
 </div>
+
+<a class="whatsapp-float" id="wa-button"
+   href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
+   onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
+    <div class="wa-text">Resolver agora</div>
+    <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+    setTimeout(() => {
+        document.getElementById('wa-button').classList.add('ready');
+    }, 2500);
+});
+</script>
 
 </body>
 </html>
