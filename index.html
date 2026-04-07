@@ -13,36 +13,38 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<!-- Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17977221500"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-17977221500');
-</script>
-
-<!-- Google Analytics -->
+<!-- Google tag (Ads + Analytics juntos) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLCZT1CL46"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JLCZT1CL46');
+  gtag('config', 'G-JLCZT1CL46'); // Analytics
+  gtag('config', 'AW-17977221500'); // Google Ads
 </script>
 
 <script>
 function gtag_report_conversion(url) {
+
+  // Evento para Analytics (WhatsApp)
+  gtag('event', 'click_whatsapp', {
+    'event_category': 'engagement',
+    'event_label': 'botao_whatsapp'
+  });
+
+  // Evento para Google Ads
   var callback = function () {
     if (typeof(url) != 'undefined') {
       window.location = url;
     }
   };
+
   gtag('event', 'conversion', {
       'send_to': 'AW-17977221500/OOBqCMaBm44cEPzCmvxC',
       'event_callback': callback
   });
+
   return false;
 }
 </script>
@@ -140,46 +142,6 @@ body {
     border-radius: 4px;
     margin-bottom: 20px;
 }
-.symptoms-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent);
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-.symptoms-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-.symptom-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    color: var(--text);
-}
-.symptom-item i { color: var(--accent); font-size: 12px; }
-
-.safety-reinforcement {
-    font-size: 14px;
-    color: var(--muted);
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.price-card {
-    background: var(--card);
-    border: 1px solid var(--glass);
-    padding: 30px;
-    border-radius: 4px;
-    text-align: center;
-    margin: 40px 0;
-}
-.price-value { font-size: 28px; font-weight: 700; }
-.price-info { color: var(--accent); font-weight: 600; font-size: 14px; }
-.price-desc { color: var(--muted); }
 
 .footer-main {
     margin-top: 60px;
@@ -195,8 +157,26 @@ body {
 <body>
 
 <div class="container">
-    <h1>⚡ Diagnóstico Elétrico Profissional</h1>
-    <p>Atendimento rápido em Porto Alegre e região.</p>
+
+    <div class="hero">
+        <span class="premium-tag">Porto Alegre e Região</span>
+        <h1>⚠️ Disjuntor caindo ou<br><em>cheiro de queimado?</em></h1>
+        <span class="focus-text">Atendimento para falhas reais: disjuntor caindo, cheiro de queimado e quedas de energia.</span>
+        <p class="sub">Diagnóstico elétrico especializado para identificar a causa exata do problema antes que ele se torne um prejuízo irreparável.</p>
+
+        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico e preciso de diagnóstico."
+           class="btn-cta"
+           onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico e preciso de diagnóstico.');">
+           Resolver problema agora
+        </a>
+    </div>
+
+    <footer class="footer-main">
+        <p><strong>CWC Diagnóstico Elétrico</strong></p>
+        <p>Telefone: (51) 99332-8805</p>
+        <p>Atendimento em Porto Alegre e região</p>
+    </footer>
+
 </div>
 
 </body>
