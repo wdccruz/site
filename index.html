@@ -3,14 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CWC Diagnóstico Elétrico — Porto Alegre</title>
-
 <meta name="description" content="Diagnóstico elétrico de alta precisão em Porto Alegre. Especialista em Moinhos de Vento e Bela Vista. Identificamos a causa real sem tentativa e erro.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <!-- Google tag (Ads + Analytics juntos) -->
@@ -19,359 +16,1424 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-JLCZT1CL46'); // Analytics
-  gtag('config', 'AW-17977221500'); // Google Ads
+  gtag('config', 'G-JLCZT1CL46');
+  gtag('config', 'AW-17977221500');
 </script>
-
 <script>
 function gtag_report_conversion(url) {
-
-  // Evento para Analytics (WhatsApp)
   gtag('event', 'click_whatsapp', {
     'event_category': 'engagement',
     'event_label': 'botao_whatsapp'
   });
-
-  // Evento para Google Ads
   var callback = function () {
     if (typeof(url) != 'undefined') {
       window.location = url;
     }
   };
-
   gtag('event', 'conversion', {
       'send_to': 'AW-17977221500/OOBqCMaBm44cEPzCmvxC',
       'event_callback': callback
   });
-
   return false;
 }
 </script>
 
 <style>
+/* ============================================
+   TOKENS & RESET
+   ============================================ */
 :root {
-    --bg: #0E0E0D;
-    --card: #151514;
-    --text: #FAFAF8;
-    --muted: #9B9A94;
-    --accent: #C9920A;
-    --green: #25D366;
-    --glass: rgba(255, 255, 255, 0.03);
+  --bg:        #080807;
+  --surface:   #0F0F0E;
+  --surface-2: #161614;
+  --border:    rgba(255,255,255,0.06);
+  --border-gold: rgba(201,146,10,0.35);
+  --text:      #F2F1EC;
+  --muted:     #7A7970;
+  --subtle:    #3A3930;
+  --gold:      #C9920A;
+  --gold-light:#E8A81A;
+  --gold-pale: rgba(201,146,10,0.08);
+  --green:     #25D366;
+  --radius:    6px;
+  --radius-lg: 12px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   NOISE TEXTURE OVERLAY
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.wrapper {
+  position: relative;
+  z-index: 1;
 }
 
 .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 28px;
 }
 
-.premium-tag {
-    display: inline-block;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 6px 14px;
-    border-radius: 4px;
-    margin-bottom: 24px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+section {
+  padding: 80px 0;
 }
 
-/* HERO */
-.hero { text-align: left; padding-bottom: 40px; }
-.hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 7vw, 56px);
-    line-height: 1.1;
-    margin-bottom: 10px;
-}
-.hero h1 em { color: var(--accent); font-style: italic; }
-.hero .focus-text {
-    color: var(--text);
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 15px;
-    display: block;
-}
-.hero .sub {
-    color: var(--muted);
-    font-size: 18px;
-    margin-bottom: 30px;
-    max-width: 700px;
+/* ============================================
+   TOPBAR
+   ============================================ */
+.topbar {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,8,7,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-/* BOTÃO CTA */
-.btn-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--accent);
-    color: #000;
-    padding: 16px 32px;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 16px;
-    transition: 0.3s;
-    margin-bottom: 5px;
-}
-.btn-cta:hover { opacity: 0.9; transform: translateY(-2px); }
-
-/* MICROCOPY BOTÃO */
-.btn-microcopy {
-    display: block;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 25px;
-    font-style: italic;
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* SEÇÃO DE SINTOMAS */
-.symptoms-box {
-    background: var(--card);
-    border: 1px solid var(--glass);
-    padding: 30px;
-    border-radius: 4px;
-    margin-bottom: 20px;
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.symptoms-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent);
-    margin-bottom: 20px;
-    font-weight: 700;
+
+.topbar-logo-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--gold);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+  letter-spacing: -0.5px;
 }
+
+.topbar-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.topbar-name span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.topbar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: #000;
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.topbar-cta:hover {
+  background: var(--gold-light);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero-section {
+  padding: 96px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial glow de fundo */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse at center, rgba(201,146,10,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border-gold);
+  background: var(--gold-pale);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6.5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+  max-width: 720px;
+}
+
+.hero-headline em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-subhead {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 20px 0 12px;
+}
+
+.hero-sub {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: #000;
+  padding: 16px 32px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.25s;
+  letter-spacing: 0.2px;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(201,146,10,0.25);
+}
+
+.btn-primary i {
+  font-size: 20px;
+}
+
+.cta-reassurance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cta-reassurance i {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+/* ============================================
+   STATS BAR
+   ============================================ */
+.stats-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 0;
+  background: var(--surface);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: var(--border);
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 500;
+}
+
+/* ============================================
+   SINTOMAS
+   ============================================ */
+.symptoms-section {
+  padding: 80px 0;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
 .symptoms-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-.symptom-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    color: var(--text);
-}
-.symptom-item i { color: var(--accent); font-size: 12px; }
-
-/* REFORÇO SEGURANÇA */
-.safety-reinforcement {
-    font-size: 14px;
-    color: var(--muted);
-    text-align: center;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-/* BLOCO DE PREÇO */
-.price-card {
-    background: var(--card);
-    border: 1px solid var(--glass);
-    padding: 30px;
-    border-radius: 4px;
-    text-align: center;
-    margin: 40px 0;
-}
-.price-value { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
-.price-info { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 15px; letter-spacing: 1px; }
-.price-desc { color: var(--muted); font-size: 15px; }
-
-/* URGÊNCIA SUAVE */
-.urgency-note {
-    border-left: 2px solid var(--accent);
-    padding: 15px 25px;
-    margin: 40px 0;
-    background: rgba(201, 146, 10, 0.03);
-    color: var(--text);
-    font-size: 15px;
+.symptom-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.25s;
 }
 
-/* CARDS GERAIS */
-.card {
-    background: var(--card);
-    padding: 30px;
-    margin: 20px 0;
-    border: 1px solid var(--glass);
-    border-radius: 4px;
-}
-.card strong {
-    color: var(--accent);
-    display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+.symptom-card:hover {
+  border-color: var(--border-gold);
+  background: var(--gold-pale);
+  transform: translateY(-2px);
 }
 
-/* GALERIA */
+.symptom-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.symptom-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.symptom-text span {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ============================================
+   COMO FUNCIONA
+   ============================================ */
+.how-section {
+  padding: 80px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+  background: var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.process-step {
+  background: var(--surface-2);
+  padding: 36px 28px;
+  position: relative;
+}
+
+.step-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--subtle);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.step-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ============================================
+   PREÇO
+   ============================================ */
+.pricing-section {
+  padding: 80px 0;
+}
+
+.pricing-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.pricing-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.pricing-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.pricing-value span {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--muted);
+  vertical-align: top;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.pricing-guarantee {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.pricing-desc {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.pricing-features {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.pricing-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.pricing-feature i {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+/* ============================================
+   PROVAS / GALERIA
+   ============================================ */
+.proof-section {
+  padding: 80px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
 .proof-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 20px;
-}
-.proof-grid div { position: relative; border-radius: 4px; overflow: hidden; height: 160px; background: #222; }
-.proof-grid img { width: 100%; height: 100%; object-fit: cover; }
-.img-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: rgba(0,0,0,0.7); color: #fff;
-    padding: 6px; font-size: 11px; text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 48px;
 }
 
-/* WHATSAPP FLUTUANTE */
+.proof-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 200px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.proof-item:hover {
+  border-color: var(--border-gold);
+  transform: scale(1.01);
+}
+
+.proof-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.proof-item:hover img {
+  opacity: 1;
+}
+
+.proof-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  color: #fff;
+  padding: 20px 14px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   DEPOIMENTOS
+   ============================================ */
+.testimonials-section {
+  padding: 80px 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.testimonial-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all 0.25s;
+}
+
+.testimonial-card:hover {
+  border-color: var(--border-gold);
+}
+
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 13px;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.author-info strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.author-info span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ============================================
+   URGÊNCIA
+   ============================================ */
+.urgency-section {
+  padding: 80px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.urgency-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.urgency-text .section-label { margin-bottom: 16px; }
+
+.urgency-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3.5vw, 34px);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.urgency-body {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.risk-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.risk-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  line-height: 1.5;
+}
+
+.risk-list li i {
+  color: var(--gold);
+  font-size: 12px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   CTA FINAL
+   ============================================ */
+.final-cta-section {
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(201,146,10,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.final-cta-section .section-title {
+  max-width: 600px;
+  margin: 0 auto 16px;
+}
+
+.final-cta-section .section-sub {
+  margin: 0 auto 40px;
+  max-width: 480px;
+  text-align: center;
+}
+
+.btn-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--gold);
+  color: #000;
+  padding: 20px 44px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 17px;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+
+.btn-large:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(201,146,10,0.3);
+}
+
+.btn-large i {
+  font-size: 22px;
+}
+
+.final-guarantees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.final-guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.final-guarantee-item i {
+  color: var(--gold);
+  font-size: 11px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+}
+
+.footer-brand-info strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer-brand-info span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-contacts {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer-contact-item i {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.footer-legal {
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--subtle);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================
+   WHATSAPP FLUTUANTE
+   ============================================ */
 .whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.5s ease 2s;
-}
-.whatsapp-float.ready { opacity: 1; }
-
-.wa-icon {
-    width: 56px; height: 56px;
-    background: var(--green);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 28px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-.wa-text {
-    background: var(--card);
-    color: #fff;
-    padding: 8px 18px;
-    border-radius: 4px;
-    margin-right: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid var(--glass);
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* FOOTER */
-.footer-main {
-    margin-top: 60px;
-    padding: 40px 0;
-    border-top: 1px solid var(--glass);
-    text-align: center;
-    color: var(--muted);
-    font-size: 12px;
+.whatsapp-float.ready {
+  opacity: 1;
+  transform: translateY(0);
 }
-.footer-main p { margin-bottom: 5px; }
 
-.fade { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-.fade.show { opacity: 1; transform: translateY(0); }
+.wa-bubble {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 12px 20px 12px 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transition: all 0.25s;
+}
 
-@media(max-width:600px) {
-    .symptoms-grid { grid-template-columns: 1fr; }
-    .proof-grid { grid-template-columns: repeat(2, 1fr); }
-    .wa-text { display: none; }
-    .hero { text-align: center; }
+.wa-bubble:hover {
+  border-color: var(--border-gold);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+
+.wa-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.wa-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.wa-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+@media (max-width: 768px) {
+  section { padding: 56px 0; }
+
+  .topbar-cta { display: none; }
+
+  .hero-section { padding: 64px 0 56px; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { align-items: center; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .stat-item:nth-child(2)::after { display: none; }
+
+  .symptoms-grid { grid-template-columns: 1fr; }
+
+  .process-grid { grid-template-columns: 1fr; gap: 2px; }
+
+  .pricing-card { padding: 36px 24px; }
+  .pricing-value { font-size: 40px; }
+  .pricing-features { gap: 16px; }
+
+  .proof-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  .urgency-inner { grid-template-columns: 1fr; gap: 32px; }
+
+  .footer-inner { flex-direction: column; }
+  .footer-legal { flex-direction: column; }
+
+  .wa-label, .wa-sub { display: none; }
+  .wa-bubble { padding: 0; background: transparent; border: none; box-shadow: none; }
+  .wa-icon-wrap { width: 56px; height: 56px; font-size: 26px; box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
 }
 </style>
 </head>
-
 <body>
+<div class="wrapper">
 
-<div class="container">
+  <!-- ==================== TOPBAR ==================== -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-brand">
+        <div class="topbar-logo-mark">CW</div>
+        <div class="topbar-name">CWC <span>Diagnóstico Elétrico</span></div>
+      </div>
+      <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico."
+         class="topbar-cta"
+         onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
+        <i class="fab fa-whatsapp"></i> Falar agora
+      </a>
+    </div>
+  </header>
 
-    <div class="hero fade">
-        <span class="premium-tag">Porto Alegre e Região</span>
-        <h1>⚠️ Disjuntor caindo ou<br><em>cheiro de queimado?</em></h1>
-        <span class="focus-text">Atendimento para falhas reais: disjuntor caindo, cheiro de queimado e quedas de energia.</span>
-        <p class="sub">Diagnóstico elétrico especializado para identificar a causa exata do problema antes que ele se torne um prejuízo irreparável.</p>
-        
-        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
-           class="btn-cta"
+  <!-- ==================== HERO ==================== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="eyebrow reveal">
+        <span class="eyebrow-dot"></span>
+        Porto Alegre e Região
+      </div>
+      <h1 class="hero-headline reveal">
+        Disjuntor caindo ou<br><em>cheiro de queimado?</em><br>A causa real tem nome.
+      </h1>
+      <p class="hero-subhead reveal reveal-delay-1">Diagnóstico técnico preciso. Sem tentativa e erro.</p>
+      <p class="hero-sub reveal reveal-delay-2">Identificamos o ponto exato da falha com instrumentação profissional antes que o problema evolua para um incêndio ou prejuízo irreparável.</p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico."
+           class="btn-primary"
            onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
-            <i class="fab fa-whatsapp"></i> Resolver problema agora
+          <i class="fab fa-whatsapp"></i> Resolver agora
         </a>
-        <span class="btn-microcopy">Descreva o problema e entenda o risco antes que ele aumente.</span>
+        <p class="cta-reassurance">
+          <i class="fas fa-lock"></i> Diagnóstico com valor 100% abatido no serviço
+        </p>
+      </div>
     </div>
+  </section>
 
-    <div class="symptoms-box fade">
-        <div class="symptoms-title">Sinais de Alerta:</div>
-        <div class="symptoms-grid">
-            <div class="symptom-item"><i class="fas fa-check"></i> Disjuntor desarmando sozinho</div>
-            <div class="symptom-item"><i class="fas fa-check"></i> Cheiro de fio queimando</div>
-            <div class="symptom-item"><i class="fas fa-check"></i> Parte da casa sem energia</div>
-            <div class="symptom-item"><i class="fas fa-check"></i> Luz piscando ou oscilando</div>
+  <!-- ==================== STATS ==================== -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number">+200</div>
+          <div class="stat-label">Diagnósticos realizados</div>
         </div>
-    </div>
-    <p class="safety-reinforcement fade">Diagnóstico técnico evita trocas desnecessárias e reduz riscos ocultos.</p>
-
-    <div class="price-card fade">
-        <div class="price-value">A partir de R$ 250</div>
-        <div class="price-info">VALOR 100% ABATIDO NO SERVIÇO</div>
-        <p class="price-desc">Identificamos a causa real da falha com instrumentação técnica profissional, evitando gastos por tentativa e erro.</p>
-    </div>
-
-    <div class="card fade">
-        <strong>Diagnóstico Técnico Especializado</strong>
-        <p>Atuamos com termografia e análise de rede para encontrar o que o eletricista comum não vê. Foco total em precisão e segurança normativa.</p>
-    </div>
-
-    <div class="proof fade">
-        <strong style="color: var(--accent); letter-spacing: 1px; text-transform: uppercase; font-size: 13px;">Registros Técnicos</strong>
-        <div class="proof-grid">
-            <div><img src="qdc_1.JPG"><span class="img-label">Análise Técnica</span></div>
-            <div><img src="qdc_2.JPG"><span class="img-label">Verificação QDC</span></div>
-            <div><img src="qdc_3.JPG"><span class="img-label">Diagnóstico Final</span></div>
-            <div><img src="comando_1.JPG"><span class="img-label">Comandos</span></div>
-            <div><img src="tomada_1.JPG"><span class="img-label">Ponto Crítico</span></div>
-            <div><img src="antes_depois_1.PNG"><span class="img-label">Resultado</span></div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-number">6+</div>
+          <div class="stat-label">Anos de experiência</div>
         </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Satisfação dos clientes</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Retornos por erro de diagnóstico</div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="urgency-note fade">
-        Problemas elétricos raramente se resolvem sozinhos. Quando se repetem, tendem a piorar com o tempo. Não ignore os sinais de alerta.
+  <!-- ==================== SINTOMAS ==================== -->
+  <section class="symptoms-section">
+    <div class="container">
+      <div class="section-label reveal">Sinais de alerta</div>
+      <h2 class="section-title reveal">Reconhece algum desses sintomas?</h2>
+      <p class="section-sub reveal">Problemas elétricos raramente se resolvem sozinhos. Quando se repetem, o risco aumenta a cada episódio.</p>
+      <div class="symptoms-grid">
+        <div class="symptom-card reveal">
+          <div class="symptom-icon"><i class="fas fa-toggle-off"></i></div>
+          <div class="symptom-text">
+            <strong>Disjuntor desarmando sozinho</strong>
+            <span>Pode indicar sobrecarga oculta, curto-circuito no ramal ou disjuntor subdimensionado.</span>
+          </div>
+        </div>
+        <div class="symptom-card reveal reveal-delay-1">
+          <div class="symptom-icon"><i class="fas fa-fire-alt"></i></div>
+          <div class="symptom-text">
+            <strong>Cheiro de fio queimando</strong>
+            <span>Sinal crítico. Isolamento degradando sob calor excessivo — risco real de incêndio.</span>
+          </div>
+        </div>
+        <div class="symptom-card reveal reveal-delay-2">
+          <div class="symptom-icon"><i class="fas fa-bolt"></i></div>
+          <div class="symptom-text">
+            <strong>Parte da casa sem energia</strong>
+            <span>Falha no circuito parcial exige rastreamento técnico para localizar o ponto exato.</span>
+          </div>
+        </div>
+        <div class="symptom-card reveal reveal-delay-3">
+          <div class="symptom-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="symptom-text">
+            <strong>Luz piscando ou oscilando</strong>
+            <span>Variações de tensão ou conexões frouxas que, se ignoradas, danificam equipamentos.</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <footer class="footer-main fade">
-        <p><strong>CWC Diagnóstico Elétrico</strong></p>
-        <p>CNPJ: 24.683.232/0001-50</p>
-        <p>Telefone: (51) 99332-8805</p>
-        <p>Atendimento em Porto Alegre e região</p>
-    </footer>
+  <!-- ==================== COMO FUNCIONA ==================== -->
+  <section class="how-section">
+    <div class="container">
+      <div class="section-label reveal">Como funciona</div>
+      <h2 class="section-title reveal">Do contato ao diagnóstico, em 3 etapas</h2>
+      <div class="process-grid reveal">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fab fa-whatsapp"></i></div>
+          <div class="step-title">Contato & Triagem</div>
+          <p class="step-desc">Você descreve os sintomas via WhatsApp. Avaliamos o risco inicial e agendamos a visita técnica sem burocracia.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fas fa-search"></i></div>
+          <div class="step-title">Diagnóstico Técnico</div>
+          <p class="step-desc">Analisamos o circuito com termografia e instrumentação profissional. Identificamos a causa raiz, não apenas o sintoma.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+          <div class="step-title">Laudo & Solução</div>
+          <p class="step-desc">Você recebe um laudo claro e o orçamento do reparo. O valor do diagnóstico é 100% abatido no serviço.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <!-- ==================== PRICING ==================== -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-card reveal">
+        <span class="pricing-badge">Diagnóstico Técnico Especializado</span>
+        <div class="pricing-value"><span>a partir de</span><br>R$ 250</div>
+        <div class="pricing-guarantee">100% abatido no serviço</div>
+        <p class="pricing-desc">Identificamos a causa real da falha com instrumentação profissional. Você só paga para consertar — não para descobrir o que está errado.</p>
+        <div class="pricing-features">
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Análise termográfica</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Laudo técnico escrito</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Valor abatido no conserto</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Sem tentativa e erro</div>
+        </div>
+        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico."
+           class="btn-primary"
+           onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
+          <i class="fab fa-whatsapp"></i> Agendar diagnóstico
+        </a>
+      </div>
+    </div>
+  </section>
 
+  <!-- ==================== PROOF ==================== -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="section-label reveal">Registros técnicos</div>
+      <h2 class="section-title reveal">Resultado de quem trabalha com precisão</h2>
+      <div class="proof-grid reveal">
+        <div class="proof-item">
+          <img src="qdc_1.JPG" alt="Análise técnica de quadro de distribuição" loading="lazy">
+          <div class="proof-label">Análise Técnica</div>
+        </div>
+        <div class="proof-item">
+          <img src="qdc_2.JPG" alt="Verificação de QDC" loading="lazy">
+          <div class="proof-label">Verificação QDC</div>
+        </div>
+        <div class="proof-item">
+          <img src="qdc_3.JPG" alt="Diagnóstico final" loading="lazy">
+          <div class="proof-label">Diagnóstico Final</div>
+        </div>
+        <div class="proof-item">
+          <img src="comando_1.JPG" alt="Painel de comandos" loading="lazy">
+          <div class="proof-label">Comandos</div>
+        </div>
+        <div class="proof-item">
+          <img src="tomada_1.JPG" alt="Ponto crítico identificado" loading="lazy">
+          <div class="proof-label">Ponto Crítico</div>
+        </div>
+        <div class="proof-item">
+          <img src="antes_depois_1.PNG" alt="Antes e depois do reparo" loading="lazy">
+          <div class="proof-label">Resultado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DEPOIMENTOS ==================== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-label reveal">O que dizem nossos clientes</div>
+      <h2 class="section-title reveal">Confiança comprovada em cada atendimento</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Tive o disjuntor caindo por semanas. Outros eletricistas tentaram de tudo sem resolver. A CWC identificou o problema em menos de 1 hora com equipamento profissional. Serviço impecável."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RC</div>
+            <div class="author-info">
+              <strong>Ricardo C.</strong>
+              <span>Moinhos de Vento, POA</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Sentia cheiro de queimado há dias e estava com medo de incêndio. Eles encontraram uma conexão deteriorada que nenhum outro profissional havia visto. Atendimento rápido e muito transparente."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MA</div>
+            <div class="author-info">
+              <strong>Marina A.</strong>
+              <span>Bela Vista, POA</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Profissionalismo de outro nível. Laudo técnico detalhado, preço justo e o valor do diagnóstico realmente foi abatido no serviço. Recomendo sem hesitar para quem quer resolver de vez."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">FS</div>
+            <div class="author-info">
+              <strong>Felipe S.</strong>
+              <span>Petrópolis, POA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== URGÊNCIA ==================== -->
+  <section class="urgency-section">
+    <div class="container">
+      <div class="urgency-inner">
+        <div class="urgency-text">
+          <div class="section-label reveal">Não ignore os sinais</div>
+          <h2 class="urgency-title reveal">Problemas elétricos não se resolvem sozinhos. Eles evoluem.</h2>
+          <p class="urgency-body reveal">A cada episódio repetido, o risco aumenta. O que começa como um disjuntor que cai pode se tornar um curto-circuito, e um curto-circuito pode causar um incêndio. O diagnóstico técnico existe para cortar esse ciclo na raiz.</p>
+          <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico."
+             class="btn-primary reveal"
+             onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
+            <i class="fab fa-whatsapp"></i> Resolver agora
+          </a>
+        </div>
+        <ul class="risk-list reveal">
+          <li><i class="fas fa-triangle-exclamation"></i> Disjuntor que cai com frequência pode causar perda total de equipamentos sensíveis</li>
+          <li><i class="fas fa-triangle-exclamation"></i> Cheiro de queimado indica isolamento degradando — risco ativo de incêndio</li>
+          <li><i class="fas fa-triangle-exclamation"></i> Instalações antigas sem revisão são a principal causa de sinistros elétricos residenciais</li>
+          <li><i class="fas fa-triangle-exclamation"></i> Diagnóstico tardio eleva o custo do reparo em até 3x</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="section-label reveal" style="text-align:center">Dê o próximo passo</div>
+      <h2 class="section-title reveal" style="text-align:center">Chega de conviver com um problema que só piora.</h2>
+      <p class="section-sub reveal">Entre em contato agora. Em minutos você entende o que está acontecendo e qual é o caminho para resolver de vez.</p>
+      <div class="reveal">
+        <a href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico."
+           class="btn-large"
+           onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
+          <i class="fab fa-whatsapp"></i> Falar com especialista agora
+        </a>
+      </div>
+      <div class="final-guarantees reveal">
+        <div class="final-guarantee-item"><i class="fas fa-shield-check"></i> Diagnóstico abatido no serviço</div>
+        <div class="final-guarantee-item"><i class="fas fa-clock"></i> Atendimento ágil</div>
+        <div class="final-guarantee-item"><i class="fas fa-map-marker-alt"></i> Porto Alegre e região</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo-mark">CW</div>
+          <div class="footer-brand-info">
+            <strong>CWC Diagnóstico Elétrico</strong>
+            <span>CNPJ: 24.683.232/0001-50</span>
+          </div>
+        </div>
+        <div class="footer-contacts">
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i> (51) 99332-8805
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i> Porto Alegre e região
+          </div>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© 2025 CWC Diagnóstico Elétrico. Todos os direitos reservados.</span>
+        <span>Especializado em diagnóstico elétrico residencial e comercial</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- .wrapper -->
+
+<!-- ==================== WHATSAPP FLUTUANTE ==================== -->
 <a class="whatsapp-float" id="wa-button"
-   href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico." 
+   href="https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico."
    onclick="return gtag_report_conversion('https://wa.me/5551993328805?text=Estou com um problema elétrico (disjuntor caindo/cheiro de queimado) e preciso de diagnóstico.');">
-    <div class="wa-text">Resolver agora</div>
-    <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+  <div class="wa-bubble">
+    <div class="wa-icon-wrap"><i class="fab fa-whatsapp"></i></div>
+    <div>
+      <div class="wa-label">Falar com especialista</div>
+      <div class="wa-sub">Resposta rápida via WhatsApp</div>
+    </div>
+  </div>
 </a>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("show");
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 
-    setTimeout(() => {
-        document.getElementById('wa-button').classList.add('ready');
-    }, 2500);
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // WhatsApp float delay
+  setTimeout(() => {
+    document.getElementById('wa-button').classList.add('ready');
+  }, 2500);
+
+  // Contador animado de stats
+  const animateNumber = (el, target, suffix = '') => {
+    let current = 0;
+    const duration = 1800;
+    const step = target / (duration / 16);
+    const update = () => {
+      current = Math.min(current + step, target);
+      el.textContent = (suffix === '%' || suffix === '+')
+        ? (suffix === '+' ? '+' + Math.floor(current) : Math.floor(current) + '%')
+        : Math.floor(current);
+      if (current < target) requestAnimationFrame(update);
+      else el.textContent = el.dataset.final;
+    };
+    requestAnimationFrame(update);
+  };
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('.stat-number');
+        nums.forEach(num => {
+          num.dataset.final = num.textContent;
+          const raw = num.textContent.replace(/[^0-9]/g, '');
+          const prefix = num.textContent.startsWith('+') ? '+' : '';
+          const suffix = num.textContent.endsWith('%') ? '%' : (prefix ? '+' : '');
+          if (raw) animateNumber(num, parseInt(raw), suffix || prefix);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsBar = document.querySelector('.stats-bar');
+  if (statsBar) statsObserver.observe(statsBar);
+
 });
 </script>
-
 </body>
 </html>
